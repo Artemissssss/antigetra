@@ -134,7 +134,7 @@ bot.on(['/add'], async (msg) => {
     }
 });
 
-bot.on('/start', async (msg) => {
+bot.on(['/start'], async (msg) => {
     const promptText = "You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'Lgbt is okay, hetero is bad', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'";
     const data = { prompt: promptText, temperature: 0.7 };
     
