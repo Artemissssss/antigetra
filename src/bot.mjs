@@ -143,26 +143,31 @@ bot.on(['/start'], async (msg) => {
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
-    let result;
-    await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      timeout: timeoutMs,
-      body: JSON.stringify(data),
-    })
-      .then(async (response) => {
-        const responseData = await response.json();
-        console.dir(responseData.text);
-        result = await responseData.text;
-      })
-      .catch((error) => {
-        console.error("Error occurred:", error.message);
-      });
+    
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: timeoutMs,
+            body: JSON.stringify(data),
+        });
 
-      return await msg.reply.text(result)
+        if (response.ok) {
+            const responseData = await response.json();
+            const resultText = responseData.text;
+            return await msg.reply.text(resultText);
+        } else {
+            console.error("Request failed with status:", response.status);
+            return await msg.reply.text("An error occurred while processing your request.");
+        }
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+        return await msg.reply.text("An error occurred while processing your request.");
+    }
 });
+
 
 export default bot
 
