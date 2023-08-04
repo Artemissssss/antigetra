@@ -37,7 +37,7 @@ async function moderateText(text) {
         throw error; // Переслати помилку, щоб обробити її вище
     }
 }
-
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 bot.on("text", async msg => {
     const chatId = msg.chat.id;
