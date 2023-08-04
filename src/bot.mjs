@@ -9,8 +9,9 @@ bot.on("text", msg => {
     let banStatus = false;
     const banWords = ["#stop_lgbt_propaganda"];
     for(let i = 0; i<banWords.length;i++){
-        if(text.includes(banWords[0])){
+        if(text.includes(banWords[i])){
             banStatus = true;
+            
         };
     };
     banStatus ? bot.deleteMessage(chatId, messageId) : null;
