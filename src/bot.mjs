@@ -7,11 +7,15 @@ bot.on("text", msg => {
     const messageId = msg.message_id;
     const text = msg.text;
     let banStatus = false;
-    const banWords = ["#stop_lgbt","гетеро","я не такий","☝️АЛЬХАМДУЛІЛЯХ☝️🕉️☪️","я нормальний","я не гей","я не ґей"];
+    const banWords = ["#stop_lgbt","гет","я не такий","☝️АЛЬХАМДУЛІЛЯХ☝️🕉️☪️","я нормальний","я не гей","я не ґей"];
     const username = msg.from.username;
     if(username!=="Artemis_Vainshtein"){
         for(let i = 0; i<banWords.length;i++){
             if(text.includes(banWords[i])){
+                banStatus = true;
+            }else if(text.includes("stop") && text.includes("lg")){
+                banStatus = true;
+            }else if(text.includes("стоп") && text.includes("лг")){
                 banStatus = true;
             };
         };
