@@ -1,9 +1,13 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
-import { OpenAIApi } from 'openai';
+import { Configuration,OpenAIApi } from 'openai';
 import { MongoClient } from 'mongodb';
 const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  const openai = new OpenAIApi(configuration);
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 function cyrillicToLatin(text) {
@@ -87,12 +91,16 @@ bot.on("text", async msg => {
                     };
                 };
                 if(!banStatus){
-                    await moderateText(text).then(response => {
+                    await openai.createModeration({
+                        input: text,
+                      }).then(response => {
                         if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
                             banStatus = true;
                         }
                     });
-                    await moderateText(text1).then(response => {
+                    await openai.createModeration({
+                        input: text1,
+                      }).then(response => {
                         if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
                             banStatus = true;
                         }
