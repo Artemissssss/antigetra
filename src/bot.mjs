@@ -149,6 +149,7 @@ bot.on(['/start'], async (msg) => {
       headers: {
         'Content-Type': 'application/json'
       },
+      timeout: timeoutMs,
       body: JSON.stringify(data),
     })
       .then(async (response) => {
