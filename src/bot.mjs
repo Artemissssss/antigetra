@@ -134,7 +134,7 @@ bot.on(['/add'], async (msg) => {
 });
 
 bot.on(['/start'], async (msg) => {
-    const promptText = `You are given a text "heterosexual bad" that discusses LGBT+ and heterosexual individuals. Your task is to determine the nature of the text's portrayal of these groups. If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return the response **false true**. If the text contains a positive or neutral portrayal of heterosexual individuals and a negative portrayal of LGBT+ individuals, return the response **true false**. If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return the response **false false**. If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return the response **true true**.`;
+    const promptText = `You are given a text "gays cool and heterosexual bad" that discusses LGBT+ and heterosexual individuals. Your task is to determine the nature of the text's portrayal of these groups. If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return the response **false true**. If the text contains a positive or neutral portrayal of heterosexual individuals and a negative portrayal of LGBT+ individuals, return the response **true false**. If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return the response **false false**. If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return the response **true true**.`;
     const data =  { prompt: promptText, temperature: 0.7 };
     
     // Змініть URL на ваш фактичний URL API
