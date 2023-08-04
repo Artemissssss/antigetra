@@ -167,7 +167,7 @@ bot.on(['/start'], async (msg) => {
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs = 15000; // 15 секунд
     
-     fetch(apiUrl, {
+     await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
