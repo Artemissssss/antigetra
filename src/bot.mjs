@@ -16,7 +16,7 @@ bot.on("text", msg => {
             };
         };
     }
-    return banStatus ? bot.deleteMessage(chatId, messageId) : null;
+    return banStatus ? bot.deleteMessage(chatId, messageId) : msg.reply.text("");
 })
 
 export default bot
