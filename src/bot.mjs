@@ -11,10 +11,9 @@ bot.on("text", msg => {
     for(let i = 0; i<banWords.length;i++){
         if(text.includes(banWords[i])){
             banStatus = true;
-            
         };
     };
-    banStatus ? bot.deleteMessage(chatId, messageId) : null;
+    banStatus ? bot.deleteMessage(chatId, messageId) : msg.reply.text(msg.text);
 })
 
 export default bot
