@@ -23,20 +23,13 @@ function cyrillicToLatin(text) {
 
 async function moderateText(text) {
     try {
-        const response = await openaiClient.moderation.classify({
-            model: 'content-filter-alpha',
-            prompts: [text],
-            labels: ['safe', 'unsafe'],
-            search_model: 'davinci',
-            max_examples: 1,
-            temperature: 0,
-        });
-
-        // Перевіряємо, чи є результат у відповіді
-        if (response.data.choices && response.data.choices[0].label) {
-            return response.data.choices[0].label;
+        if (openaiClient.moderation && typeof openaiClient.moderation.classify === 'function') {
+            const response = await openaiClient.moderation.classify({
+                prompt: text
+            });
+            return response;
         } else {
-            throw new Error('Invalid response format');
+            throw new Error('Invalid OpenAI moderation API');
         }
     } catch (error) {
         console.error('Error occurred:', error.message);
