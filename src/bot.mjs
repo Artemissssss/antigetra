@@ -1,9 +1,9 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
-import { OpenAIApi } from 'openai';
+import openai from 'openai';
 import { MongoClient } from 'mongodb';
-const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
+const openaiClient = new openai(process.env.OPENAI_API_KEY);
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 function cyrillicToLatin(text) {
@@ -47,7 +47,7 @@ bot.on("text", async msg => {
     const username = msg.from.username;
     if(username!=="Artemis_Vainshtein"){
         for(let i = 0; i<banWords.length;i++){
-            if(text.includes(banWords[i]) || text1.includes(banWords[i])){
+            if(text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])){
                 banStatus = true;
                 break;
             }else if(text.includes("st") && text.includes("lg") && !text.includes("stu")){
@@ -104,8 +104,8 @@ bot.on("text", async msg => {
 bot.on(['/add'], async (msg) => {
     const username = msg.from.username;
     const replyToDelete = msg.reply_to_message;
-    const text = replyToDelete.text
-    if(username!=="Artemis_Vainshtein"){
+    const text = replyToDelete.text 
+    if(username==="Artemis_Vainshtein"){
         const client = await MongoClient.connect(
             `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
             { useNewUrlParser: true, useUnifiedTopology: true }
