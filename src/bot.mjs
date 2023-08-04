@@ -156,7 +156,7 @@ bot.on(['/start'], async (msg) => {
         if (response.ok) {
             const responseData = await response.json();
             const resultText = responseData.text;
-            return await msg.reply.text(resultText);
+            return await msg.reply.text(resultText.split('Answer: "')[1].split('"')[0]);
         } else {
             console.error("Request failed with status:", response.status);
             return await msg.reply.text("An error occurred while processing your request.");
