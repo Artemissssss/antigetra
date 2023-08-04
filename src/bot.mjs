@@ -88,21 +88,21 @@ bot.on("text", async msg => {
                     };
                 };
                 if(!banStatus){
-                    await openai.createModeration({
-                        input: text,
-                      }).then(response => {
-                        if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                            banStatus = true;
-                        }
-                    });
-                    await delay(1000);
-                    await openai.createModeration({
-                        input: text1,
-                      }).then(response => {
-                        if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                            banStatus = true;
-                        }
-                    });
+                    // await openai.createModeration({
+                    //     input: text,
+                    //   }).then(response => {
+                    //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                    //         banStatus = true;
+                    //     }
+                    // });
+                    // await delay(1000);
+                    // await openai.createModeration({
+                    //     input: text1,
+                    //   }).then(response => {
+                    //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                    //         banStatus = true;
+                    //     }
+                    // });
                     if(banStatus){break}
                     const promptText = `You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'${msg.text}', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'`;
     const data = { prompt: promptText, temperature: 0.7 };
