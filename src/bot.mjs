@@ -1,5 +1,5 @@
 import TeleBot from "telebot"
-import openai from 'openai'
+const openai = require('openai');
 const { MongoClient } = require('mongodb');
 const openaiClient = new openai(process.env.OPENAI_API_KEY);
 
