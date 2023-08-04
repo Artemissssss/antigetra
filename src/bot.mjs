@@ -1,9 +1,9 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
-import { OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 import { MongoClient } from 'mongodb';
-const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
+const openaiClient = new OpenAI(process.env.OPENAI_API_KEY);
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 function cyrillicToLatin(text) {
@@ -43,7 +43,7 @@ bot.on("text", async msg => {
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     const text1 = (msg.text).toLowerCase();
     let banStatus = false;
-    const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het"];
+    const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет"];
     const username = msg.from.username;
     if(username!=="Artemis_Vainshtein"){
         for(let i = 0; i<banWords.length;i++){
@@ -112,7 +112,7 @@ bot.on("text", async msg => {
     })
       .then(async (response) => {
         const responseData = await response.json();
-         msg.reply.text(responseData)
+         console.log(responseData)
       })
       .catch((error) => {
         console.error("Error occurred:", error.message);
