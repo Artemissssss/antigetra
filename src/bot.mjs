@@ -136,13 +136,13 @@ bot.on(['/add'], async (msg) => {
 
 bot.on(['/start'], async (msg) => {
     const promptText = "You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'Lgbt is okay, hetero is bad', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'";
-    const data = { prompt: promptText, temperature: 0.7 };
+    const data =  { prompt: promptText, temperature: 0.7 };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl = "https://this-is-api.run-eu-central1.goorm.site/gpt";
+    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
     
     // Збільште тайм-аут, якщо це необхідно
-    const timeoutMs = 15000; // 15 секунд
+    const timeoutMs =  15000; // 15 секунд
     let result;
     await fetch(apiUrl, {
       method: 'POST',
@@ -155,13 +155,13 @@ bot.on(['/start'], async (msg) => {
       .then(async (response) => {
         const responseData = await response.json();
         console.dir(responseData.text);
-        result = responseData.text;
+        result = await responseData.text;
       })
       .catch((error) => {
         console.error("Error occurred:", error.message);
       });
 
-      return msg.reply.text(result)
+      return await msg.reply.text(result)
 });
 
 export default bot
