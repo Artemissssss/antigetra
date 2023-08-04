@@ -68,46 +68,45 @@ bot.on("text", async msg => {
             }else if(text.includes("no") && text.includes("lg")){
                 banStatus = true;
                 break;
-            }else if(`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960"){
-                if(text.includes("natural")){
-                    banStatus = true;
-                    break;
-                }
-                const client = await MongoClient.connect(
-                    `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
-                    { useNewUrlParser: true, useUnifiedTopology: true }
-                );
-                const coll = client.db('banwords').collection('lgbtqplus');
-                const cursor = coll.find();
-                const result = await cursor.toArray();
-                await client.close();
-                for(let i = 0; i<result.length;i++){
-                    if(text.includes(result[i].text) || text1.includes(result[i].text)){
-                        banStatus = true;
-                        break;
-                    };
-                };
-                // if(!banStatus){
-                //     // await openai.createModeration({
-                //     //     input: text,
-                //     //   }).then(response => {
-                //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                //     //         banStatus = true;
-                //     //     }
-                //     // });
-                //     // await delay(1000);
-                //     // await openai.createModeration({
-                //     //     input: text1,
-                //     //   }).then(response => {
-                //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                //     //         banStatus = true;
-                //     //     }
-                //     // });
-                //     if(banStatus){break}
-            
-                // }
             }
         };
+        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960") && !banStatus){
+            if(text.includes("natural")){
+                banStatus = true;
+            }
+            const client = await MongoClient.connect(
+                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
+                { useNewUrlParser: true, useUnifiedTopology: true }
+            );
+            const coll = client.db('banwords').collection('lgbtqplus');
+            const cursor = coll.find();
+            const result = await cursor.toArray();
+            await client.close();
+            for(let i = 0; i<result.length;i++){
+                if(text.includes(result[i].text) || text1.includes(result[i].text)){
+                    banStatus = true;
+                };
+            };
+            // if(!banStatus){
+            //     // await openai.createModeration({
+            //     //     input: text,
+            //     //   }).then(response => {
+            //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+            //     //         banStatus = true;
+            //     //     }
+            //     // });
+            //     // await delay(1000);
+            //     // await openai.createModeration({
+            //     //     input: text1,
+            //     //   }).then(response => {
+            //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+            //     //         banStatus = true;
+            //     //     }
+            //     // });
+            //     if(banStatus){break}
+        
+            // }
+        }
     }
     return banStatus ? bot.deleteMessage(chatId, messageId) : null;
 });
