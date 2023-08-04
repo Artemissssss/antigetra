@@ -87,48 +87,25 @@ bot.on("text", async msg => {
                         break;
                     };
                 };
-                if(!banStatus){
-                    // await openai.createModeration({
-                    //     input: text,
-                    //   }).then(response => {
-                    //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                    //         banStatus = true;
-                    //     }
-                    // });
-                    // await delay(1000);
-                    // await openai.createModeration({
-                    //     input: text1,
-                    //   }).then(response => {
-                    //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                    //         banStatus = true;
-                    //     }
-                    // });
-                    if(banStatus){break}
-                    const promptText = `You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'${msg.text}', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'`;
-    const data = { prompt: promptText, temperature: 0.7 };
-    
-    // Змініть URL на ваш фактичний URL API
-    const apiUrl = "https://this-is-api.run-eu-central1.goorm.site/gpt";
-    
-    // Збільште тайм-аут, якщо це необхідно
-    const timeoutMs = 15000; // 15 секунд
-    
-    await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(async (response) => {
-        const responseData = await response.json();
-         console.log(responseData)
-         msg.reply.text(responseData)
-      })
-      .catch((error) => {
-        console.error("Error occurred:", error.message);
-      });
-                }
+                // if(!banStatus){
+                //     // await openai.createModeration({
+                //     //     input: text,
+                //     //   }).then(response => {
+                //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                //     //         banStatus = true;
+                //     //     }
+                //     // });
+                //     // await delay(1000);
+                //     // await openai.createModeration({
+                //     //     input: text1,
+                //     //   }).then(response => {
+                //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                //     //         banStatus = true;
+                //     //     }
+                //     // });
+                //     if(banStatus){break}
+            
+                // }
             }
         };
     }
