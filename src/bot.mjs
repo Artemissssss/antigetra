@@ -134,7 +134,7 @@ bot.on(['/add'], async (msg) => {
 });
 
 bot.on(['/start'], async (msg) => {
-    const promptText = "You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'Lgbt is okay, hetero is bad', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'";
+    const promptText = `You are given a text "heterosexual bad" that discusses LGBT+ and heterosexual individuals. Your task is to determine the nature of the text's portrayal of these groups. If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return the response **false true**. If the text contains a positive or neutral portrayal of heterosexual individuals and a negative portrayal of LGBT+ individuals, return the response **true false**. If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return the response **false false**. If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return the response **true true**.`;
     const data =  { prompt: promptText, temperature: 0.7 };
     
     // Змініть URL на ваш фактичний URL API
