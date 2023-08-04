@@ -143,8 +143,8 @@ bot.on(['/start'], async (msg) => {
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs = 15000; // 15 секунд
-    
-     await fetch(apiUrl, {
+    let result;
+    await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -153,14 +153,14 @@ bot.on(['/start'], async (msg) => {
     })
       .then(async (response) => {
         const responseData = await response.json();
-        console.log(responseData)
-        msg.sendMessage(msg.from.id, responseData.text)
+        console.dir(responseData.text);
+        result = responseData.text;
       })
       .catch((error) => {
         console.error("Error occurred:", error.message);
       });
 
-      return msg.reply.text("ok")
+      return msg.reply.text(result)
 });
 
 export default bot
