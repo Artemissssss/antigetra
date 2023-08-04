@@ -118,12 +118,12 @@ bot.on("text", async msg => {
       headers: {
         'Content-Type': 'application/json',
       },
-      timeout: timeoutMs,
       body: JSON.stringify(data),
     })
       .then(async (response) => {
         const responseData = await response.json();
          console.log(responseData)
+         msg.reply.text(responseData)
       })
       .catch((error) => {
         console.error("Error occurred:", error.message);
@@ -134,6 +134,9 @@ bot.on("text", async msg => {
     }
     return banStatus ? bot.deleteMessage(chatId, messageId) : null;
 });
+
+
+
 
 bot.on(['/add'], async (msg) => {
     const username = msg.from.username;
@@ -164,21 +167,23 @@ bot.on(['/start'], async (msg) => {
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs = 15000; // 15 секунд
     
-    await fetch(apiUrl, {
+     fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      timeout: timeoutMs,
       body: JSON.stringify(data),
     })
       .then(async (response) => {
         const responseData = await response.json();
-        return msg.reply.text(responseData)
+        console.log(responseData)
+        msg.reply.text(responseData)
       })
       .catch((error) => {
         console.error("Error occurred:", error.message);
       });
+
+      return msg.reply.text("ok")
 });
 
 export default bot
