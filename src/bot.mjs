@@ -7,13 +7,16 @@ bot.on("text", msg => {
     const messageId = msg.message_id;
     const text = msg.text;
     let banStatus = false;
-    const banWords = ["#stop_lgbt_propaganda"];
-    for(let i = 0; i<banWords.length;i++){
-        if(text.includes(banWords[i])){
-            banStatus = true;
+    const banWords = ["#stop_lgbt_propaganda","гетеро","я не такий","☝️АЛЬХАМДУЛІЛЯХ☝️🕉️☪️","я нормальний","я не гей","я не ґей"];
+    const username = msg.from.username;
+    if(username!=="Artemis_Vainshtein"){
+        for(let i = 0; i<banWords.length;i++){
+            if(text.includes(banWords[i])){
+                banStatus = true;
+            };
         };
-    };
-    return banStatus ? bot.deleteMessage(chatId, messageId) : msg.reply.text(msg.text);
+    }
+    return banStatus ? bot.deleteMessage(chatId, messageId) : null;
 })
 
 export default bot
