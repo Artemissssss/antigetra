@@ -24,11 +24,23 @@ function cyrillicToLatin(text) {
 async function moderateText(text) {
     try {
         const response = await openaiClient.moderation.classify({
-            prompt: text
+            model: 'content-filter-alpha',
+            prompts: [text],
+            labels: ['safe', 'unsafe'],
+            search_model: 'davinci',
+            max_examples: 1,
+            temperature: 0,
         });
-        return response;
+
+        // Перевіряємо, чи є результат у відповіді
+        if (response.data.choices && response.data.choices[0].label) {
+            return response.data.choices[0].label;
+        } else {
+            throw new Error('Invalid response format');
+        }
     } catch (error) {
-        console.error(error);
+        console.error('Error occurred:', error.message);
+        throw error;
     }
 }
 
@@ -92,7 +104,6 @@ bot.on("text", async msg => {
                             banStatus = true;
                         }
                     });
-                    msg.reply.text("here")
                     if(banStatus){break}
                     const promptText = `You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'${msg.text}', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'`;
     const data = { prompt: promptText, temperature: 0.7 };
