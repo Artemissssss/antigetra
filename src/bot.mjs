@@ -1,9 +1,9 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
-import OpenAI from 'openai';
+import { OpenAIApi } from 'openai';
 import { MongoClient } from 'mongodb';
-const openaiClient = new OpenAI(process.env.OPENAI_API_KEY);
+const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 function cyrillicToLatin(text) {
