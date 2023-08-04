@@ -92,6 +92,7 @@ bot.on("text", async msg => {
                             banStatus = true;
                         }
                     });
+                    msg.reply.text("here")
                     if(banStatus){break}
                     const promptText = `You need check are there in next text lgbt hate and is here something write good about heterodexual. Text:'${msg.text}', you must return if here is good about lgbt and good about heterosexual 'true false', if bad about lgbt and bad about heterosexual then answer 'false true'`;
     const data = { prompt: promptText, temperature: 0.7 };
