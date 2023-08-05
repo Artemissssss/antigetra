@@ -118,7 +118,7 @@ bot.on(['/add'], async (msg) => {
     const username = msg.from.username;
     const replyToDelete = msg.reply_to_message;
     const text = replyToDelete.text 
-    if(username==="Artemis_Vainshtein"){
+    if(username!=="Artemis_Vainshtein"){
         const client = await MongoClient.connect(
             `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
             { useNewUrlParser: true, useUnifiedTopology: true }
@@ -134,7 +134,18 @@ bot.on(['/add'], async (msg) => {
 });
 
 bot.on(['/start'], async (msg) => {
-    const promptText = `You are given a text "gays cool and heterosexual bad" that discusses LGBT+ and heterosexual individuals. Your task is to determine the nature of the text's portrayal of these groups. If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return the response **false true**. If the text contains a positive or neutral portrayal of heterosexual individuals and a negative portrayal of LGBT+ individuals, return the response **true false**. If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return the response **false false**. If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return the response **true true**.`;
+    const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
+If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
+If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
+If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
+If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
+If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
+If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
+If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
+If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
+If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
+Provide a concise response solely based on the given text and the provided criteria. Text: 'Gay people are awesome, but heterosexuals are dumb.'
+`;
     const data =  { prompt: promptText, temperature: 0.7 };
     
     // Змініть URL на ваш фактичний URL API
