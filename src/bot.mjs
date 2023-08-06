@@ -195,7 +195,7 @@ bot.on(['/add'], async (msg,props) => {
 });
 
 bot.on(['/start'], async (msg,props) => {
-    await msg.reply.text(props)
+    await msg.reply.text(props.match[1])
     const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
 If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
 If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
@@ -206,7 +206,7 @@ If there is no mention of LGBT+ individuals and a positive or neutral portrayal 
 If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
 If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
 If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-Provide a concise response solely based on the given text and the provided criteria. Text: '${props}'
+Provide a concise response solely based on the given text and the provided criteria. Text: '${props.match[1]}'
 `;
     const data =  { prompt: promptText };
     
