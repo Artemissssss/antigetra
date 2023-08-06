@@ -149,7 +149,7 @@ Provide a concise response solely based on the given text and the provided crite
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/bard";
+    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt4-fake";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
