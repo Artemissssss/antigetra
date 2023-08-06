@@ -47,13 +47,14 @@ bot.on("text", async msg => {
     .replace(/ç/i, 'c').replace(/è/i, 'e').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     .replace(/ð/i, 'o').replace(/л/i, 'l').replace(/ö/i, 'o').replace(/ô/i, 'o').replace(/ò/i, 'o').replace(/ó/i, 'o').replace(/ł/i, 'l').replace(/ñ/i, 'n')
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
+    .replace(/./i, '').replace(/_/i, '').replace(/-/i, 'i').replace("(", 'i').replace(")", 'i')
     const text1 = (msg.text).toLowerCase();
     let banStatus = false;
     const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет"];
     const username = msg.from.username;
     if(username!=="Artemis_Vainshtein"){
         for(let i = 0; i<banWords.length;i++){
-            if(text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])){
+            if((text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])) && !text.includes("гетьман") && !text1.includes("гетьман")){
                 banStatus = true;
                 break;
             }else if(text.includes("st") && text.includes("lg") && !text.includes("stu")){
@@ -87,53 +88,113 @@ bot.on("text", async msg => {
                     banStatus = true;
                 };
             };
-            // if(!banStatus){
-            //     // await openai.createModeration({
-            //     //     input: text,
-            //     //   }).then(response => {
-            //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-            //     //         banStatus = true;
-            //     //     }
-            //     // });
-            //     // await delay(1000);
-            //     // await openai.createModeration({
-            //     //     input: text1,
-            //     //   }).then(response => {
-            //     //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-            //     //         banStatus = true;
-            //     //     }
-            //     // });
-            //     if(banStatus){break}
-        
-            // }
+            if(!banStatus){
+                // await openai.createModeration({
+                //     input: text,
+                //   }).then(response => {
+                //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                //         banStatus = true;
+                //     }
+                // });
+                // await delay(1000);
+                // await openai.createModeration({
+                //     input: text1,
+                //   }).then(response => {
+                //     if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                //         banStatus = true;
+                //     }
+                // });
+                const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
+                If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
+                If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
+                If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
+                If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
+                If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
+                If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
+                If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
+                If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
+                If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
+                Provide a concise response solely based on the given text and the provided criteria. Text: '${msg.text}'
+                `;
+                    const data =  { prompt: promptText };
+                    
+                    // Змініть URL на ваш фактичний URL API
+                    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt4-fake";
+                    
+                    // Збільште тайм-аут, якщо це необхідно
+                    const timeoutMs =  15000; // 15 секунд
+                    
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            timeout: timeoutMs,
+                            body: JSON.stringify(data),
+                        });
+                
+                        if (response.ok) {
+                            const responseData = await response.json();
+                            const resultText = responseData.text;
+                            const arr = resultText.slice("true false".indexOf("true"),"true false".indexOf("false")+5).split(" ")
+                            if(arr[0] ==="true"){
+                                    banStatus=true;
+                            }else if(arr[0] === "false"){
+                                if(arr[1]==="false"){
+                                    banStatus=true;
+                                    await msg.reply.text("ГЕТЕРО ПРОПАГАНДА ЗАБОРОНЕНА");
+                                }
+                            }
+                        } else {
+                            console.error("Request failed with status:", response.status);
+                             await msg.reply.text("An error occurred while processing your request.");
+                        }
+                    } catch (error) {
+                        console.error("Error occurred:", error.message);
+                         await msg.reply.text("An error occurred while processing your request.");
+                    }
+            }
         }
     }
     return banStatus ? bot.deleteMessage(chatId, messageId) : null;
 });
 
 
+//"true false".slice("true false".indexOf("true"),"true false".indexOf("false")+5)
 
-
-bot.on(['/add'], async (msg) => {
+bot.on(['/add'], async (msg,props) => {
     const username = msg.from.username;
     const replyToDelete = msg.reply_to_message;
     const text = replyToDelete.text 
-    if(username!=="Artemis_Vainshtein"){
-        const client = await MongoClient.connect(
-            `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
-            { useNewUrlParser: true, useUnifiedTopology: true }
-        );
-        const coll = client.db('banwords').collection('lgbtqplus');
-        const result = await coll.insertOne({text:text})
-        await client.close();
-        bot.deleteMessage(msg.chat.id, replyToDelete.message_id);
-        return msg.reply.text("Додано")
+    if(username==="Artemis_Vainshtein"){
+        if(parseInt(props)){
+            const client = await MongoClient.connect(
+                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
+                { useNewUrlParser: true, useUnifiedTopology: true }
+            );
+            const coll = client.db('banwords').collection('lgbtqplus');
+            const result = await coll.insertOne({text:text.slice(0,parseInt(props))})
+            await client.close();
+            bot.deleteMessage(msg.chat.id, replyToDelete.message_id);
+            return msg.reply.text("Додано")
+        }else{
+            const client = await MongoClient.connect(
+                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
+                { useNewUrlParser: true, useUnifiedTopology: true }
+            );
+            const coll = client.db('banwords').collection('lgbtqplus');
+            const result = await coll.insertOne({text:text})
+            await client.close();
+            bot.deleteMessage(msg.chat.id, replyToDelete.message_id);
+            return msg.reply.text("Додано")
+        }
     }else{
         return msg.reply.text("Безправний")
     }
 });
 
-bot.on(['/start'], async (msg) => {
+bot.on(['/start'], async (msg,props) => {
     const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
 If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
 If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
@@ -144,7 +205,7 @@ If there is no mention of LGBT+ individuals and a positive or neutral portrayal 
 If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
 If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
 If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-Provide a concise response solely based on the given text and the provided criteria. Text: 'Gay people are awesome, but heterosexuals are dumb.'
+Provide a concise response solely based on the given text and the provided criteria. Text: '${props}'
 `;
     const data =  { prompt: promptText };
     
