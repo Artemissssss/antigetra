@@ -104,56 +104,7 @@ bot.on("text", async msg => {
                 //         banStatus = true;
                 //     }
                 // });
-                const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
-                If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
-                If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
-                If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
-                If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-                If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
-                If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
-                If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
-                If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
-                If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-                Provide a concise response solely based on the given text and the provided criteria. Text: '${msg.text}'
-                `;
-                    const data =  { prompt: promptText };
-                    
-                    // Змініть URL на ваш фактичний URL API
-                    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt4-fake";
-                    
-                    // Збільште тайм-аут, якщо це необхідно
-                    const timeoutMs =  15000; // 15 секунд
-                    
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            timeout: timeoutMs,
-                            body: JSON.stringify(data),
-                        });
-                
-                        if (response.ok) {
-                            const responseData = await response.json();
-                            const resultText = responseData.text;
-                            const arr = resultText.slice("true false".indexOf("true"),"true false".indexOf("false")+5).split(" ")
-                            if(arr[0] ==="true"){
-                                    banStatus=true;
-                            }else if(arr[0] === "false"){
-                                if(arr[1]==="false"){
-                                    banStatus=true;
-                                    await msg.reply.text("ГЕТЕРО ПРОПАГАНДА ЗАБОРОНЕНА");
-                                }
-                            }
-                        } else {
-                            console.error("Request failed with status:", response.status);
-                             await msg.reply.text("An error occurred while processing your request.");
-                        }
-                    } catch (error) {
-                        console.error("Error occurred:", error.message);
-                         await msg.reply.text("An error occurred while processing your request.");
-                    }
+    
             }
         }
     }
