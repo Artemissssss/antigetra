@@ -118,7 +118,7 @@ bot.on(['/add'], async (msg) => {
     const username = msg.from.username;
     const replyToDelete = msg.reply_to_message;
     const text = replyToDelete.text 
-    if(username==="Artemis_Vainshtein"){
+    if(username!=="Artemis_Vainshtein"){
         const client = await MongoClient.connect(
             `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
             { useNewUrlParser: true, useUnifiedTopology: true }
@@ -146,10 +146,10 @@ If there is a negative portrayal of LGBT+ individuals but no mention of heterose
 If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
 Provide a concise response solely based on the given text and the provided criteria. Text: 'Gay people are awesome, but heterosexuals are dumb.'
 `;
-    const data =  { prompt: promptText, temperature: 0.7 };
+    const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
+    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt-reserve";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
