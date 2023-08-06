@@ -118,7 +118,7 @@ bot.on(['/add'], async (msg) => {
     const username = msg.from.username;
     const replyToDelete = msg.reply_to_message;
     const text = replyToDelete.text 
-    if(username!=="Artemis_Vainshtein"){
+    if(username==="Artemis_Vainshtein"){
         const client = await MongoClient.connect(
             `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
             { useNewUrlParser: true, useUnifiedTopology: true }
