@@ -71,7 +71,7 @@ bot.on("text", async msg => {
                 break;
             }
         };
-        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960") && !banStatus){
+        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960" || `${msg.from.id}` === "1864697655") && !banStatus){
             if(text.includes("natural")){
                 banStatus = true;
             }
