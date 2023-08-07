@@ -239,13 +239,12 @@ Provide a concise response solely based on the given text and the provided crite
     }
 });
 bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
-    const promptText = `if here is nothing about LGBT you answer 'sorry i don't care '
-    You need answer if there is something not good about LGBT, you need answer 'Bro☠️', if here is good about LGBT you need just answer. Text:'${props.match[1]}'`;
+    const promptText = `${props.match[1]}`;
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
     const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt4-fake";
-    
+    const apiUrl2 =  "https://this-is-api.run-eu-central1.goorm.site/bard";
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
     
@@ -264,6 +263,23 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
             const resultText = responseData.text;
             return await msg.reply.text(resultText);
         } else {
+            const response = await fetch(apiUrl2, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: timeoutMs,
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            const resultText = responseData.text;
+            return await msg.reply.text(resultText);
+        } else {
+            console.error("Request failed with status:", response.status);
+            return await msg.reply.text("An error occurred while processing your request.");
+        }
             console.error("Request failed with status:", response.status);
             return await msg.reply.text("An error occurred while processing your request.");
         }
