@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       
         // Rest of your code
       } catch (error) {
-        res.status(404).json("bl")
+        res.status(404).json({error:error})
         console.error("Error:", error);
       }
     // console.log(await );
