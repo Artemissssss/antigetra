@@ -60,10 +60,10 @@ bot.on("text", async msg => {
             }else if(text.includes("st") && text.includes("lg") && !text.includes("stu")){
                 banStatus = true;
                 break;
-            }else if(text.includes("ст") && (text.includes("лг") || text.includes("лґ"))){
+            }else if(text1.includes("ст") && (text1.includes("лг") || text.includes("лґ"))){
                 banStatus = true;
                 break;
-            }else if(text.includes("ні") && text.includes("лг")){
+            }else if(text1.includes("ні") && text1.includes("лг")){
                 banStatus = true;
                 break;
             }else if(text.includes("no") && text.includes("lg")){
