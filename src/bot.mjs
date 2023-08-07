@@ -263,7 +263,7 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
             const resultText = responseData.text;
             return await msg.reply.text(resultText);
         } else {
-            const response = await fetch(apiUrl2, {
+            const response1 = await fetch(apiUrl2, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -272,12 +272,12 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
             body: JSON.stringify(data),
         });
 
-        if (response.ok) {
-            const responseData = await response.json();
+        if (response1.ok) {
+            const responseData = await response1.json();
             const resultText = responseData.text;
             return await msg.reply.text(resultText);
         } else {
-            console.error("Request failed with status:", response.status);
+            console.error("Request failed with status:", response1.status);
             return await msg.reply.text("An error occurred while processing your request.");
         }
             console.error("Request failed with status:", response.status);
