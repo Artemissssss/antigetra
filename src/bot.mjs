@@ -47,7 +47,7 @@ bot.on("text", async msg => {
     .replace(/ç/i, 'c').replace(/è/i, 'e').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     .replace(/ð/i, 'o').replace(/л/i, 'l').replace(/ö/i, 'o').replace(/ô/i, 'o').replace(/ò/i, 'o').replace(/ó/i, 'o').replace(/ł/i, 'l').replace(/ñ/i, 'n')
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
-    .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '')
+    .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').replace(" ", '')
     const text1 = (msg.text).toLowerCase();
     let banStatus = false;
     const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет"];
