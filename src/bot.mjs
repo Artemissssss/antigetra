@@ -194,13 +194,13 @@ bot.on(['/add'], async (msg,props) => {
     }
 });
 
-bot.on(['/start'], async (msg,props) => {
+bot.on(/^\/ok (.+)$/, async (msg,props) => {
     const client = await MongoClient.connect(
         `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
         { useNewUrlParser: true, useUnifiedTopology: true }
     );
     const coll = client.db('banwords').collection('lgbtqplus');
-    const result = await coll.insertOne({text:msg})
+    const result = await coll.insertOne({text:msg,props:props})
     await client.close();
     await msg.reply.text("Додано")
     const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
