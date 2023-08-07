@@ -200,7 +200,7 @@ bot.on(['/start'], async (msg,props) => {
         { useNewUrlParser: true, useUnifiedTopology: true }
     );
     const coll = client.db('banwords').collection('lgbtqplus');
-    const result = await coll.insertOne({text:props.match[1]})
+    const result = await coll.insertOne({text:props.match})
     await client.close();
     await msg.reply.text("Додано")
     const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
