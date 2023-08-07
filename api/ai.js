@@ -3,7 +3,7 @@ import Bard from "bard-ai";
 export default async function handler(req, res) {
  
     await Bard.init("sidts-CjEBSAxbGaKMRv-GMYaEE-c8DzVe_W7ZPC9ktwD2hPvenlS02XiYpdkzFEj7bRSEXxbAEAA");
-    letmyConversation =new Bard.Chat();
+    let myConversation =new Bard.Chat();
     try {
       
         // Use the askAI function here
