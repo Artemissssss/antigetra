@@ -243,7 +243,7 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt4-fake";
+    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/bard";
     const apiUrl2 =  "https://this-is-api.run-eu-central1.goorm.site/bard";
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
