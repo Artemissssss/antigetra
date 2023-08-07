@@ -3,7 +3,7 @@ import Bard from "bard-ai";
 export default async function handler(req, res) {
   try {
     // Initialize Bard with your API key
-    Bard.init("sidts-CjEBSAxbGaKMRv-GMYaEE-c8DzVe_W7ZPC9ktwD2hPvenlS02XiYpdkzFEj7bRSEXxbAEAA");
+    Bard.init("ZgjLf1Wof9RlqKY3TcVmRWqhRkWMr1bkHMPRJ-CMhVmOfxer_kXFTd508xaPtafFL2YWBQ.");
 
     // Create a new chat instance
     const myConversation = new Bard.Chat();
