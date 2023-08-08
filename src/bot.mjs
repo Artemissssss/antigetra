@@ -295,7 +295,7 @@ bot.on(/^\/bard (.+)$/, async (msg,props) => {
         
         if (response.ok) {
             const responseData = await response.json();
-            const resultText = responseData.text;
+            const resultText = responseData.response;
             return await msg.reply.text(resultText);
         } else {
             console.error("Request failed with status:", response.status);
