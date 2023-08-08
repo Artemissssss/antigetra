@@ -273,12 +273,11 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
 });
 
 bot.on(/^\/bard (.+)$/, async (msg,props) => {
-    const promptText = `${props.match[1]}
-`;
+    const promptText = `${props.match[1]}`;
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "/api/ai";
+    const apiUrl =  "https://antigetra.vercel.app/api/ai";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
