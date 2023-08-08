@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bard-ai": "^2.0.2",
+    "bing-chat": "^0.2.3",
     "mongodb": "^5.7.0",
     "openai": "^3.3.0",
     "telebot": "^1.4.1",
