@@ -52,7 +52,7 @@ bot.on("text", async msg => {
     let banStatus = false;
     const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет"];
     const username = msg.from.username;
-    if(username!=="Artemis_Vainshtein"){
+    if(username!=="Artemis_Vainshtein" || msg.from.id !=="1647838471" || msg.from.id !=="833961178" || msg.from.id !=="1128434712" || msg.from.id !=="888466576" || msg.from.id !=="752317094" || msg.from.id !=="628452250"){
         for(let i = 0; i<banWords.length;i++){
             if((text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])) && !text.includes("гетьман") && !text1.includes("гетьман")){
                 banStatus = true;
