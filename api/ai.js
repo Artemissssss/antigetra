@@ -18,5 +18,7 @@ export default async function handler(req, res) {
       console.error("Error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
+  }else{
+    res.status(403).json({message:"Not for this"})
   }
 }
