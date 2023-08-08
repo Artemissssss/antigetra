@@ -1,12 +1,18 @@
 import { ChatGPTUnofficialProxyAPI } from 'chatgpt'
+import Authenticator from 'openai-token'
+
 
 export default async function handler(req, res) {
   if(req.method === "POST"){
     try {
       // Initialize Bard with your API key
+      const auth = new Authenticator('astrakiller20@gmail.com', 'm3MgfG5NVtkKweR')
+      await auth.begin()
+      const token = await auth.getAccessToken()
+
       const api = new ChatGPTUnofficialProxyAPI({
-        accessToken: process.env.OPENAI_API_KEY,
-        apiReverseProxyUrl: 'https://api.pawan.krd/backend-api/conversation'
+        accessToken: token,
+        apiReverseProxyUrl: 'https://ai.fakeopen.com/api/conversation'
       })
     
       const response = await api.sendMessage(req.body.prompt)
