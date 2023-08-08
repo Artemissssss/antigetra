@@ -3,7 +3,7 @@ import Bard from "bard-ai";
 export default async function handler(req, res) {
   try {
     // Initialize Bard with your API key
-let myBard = new Bard({ "__Secure-1PSID": "Zgi-mD15rkqONivOepJl7O5mYKfj8BobSyAx41wCrHiGfvms1lbbdJgwQa3Qnn0g4gdg0g.", "__Secure-1PSIDTS": "sidts-CjEBSAxbGYnNFCtt654peQI9_OAgqrhMXj-Nki6g0vVdGGqlR-O4iyl7Xt8qDAEy4w-rEAA" }, {
+let myBard = new Bard({ "__Secure-1PSID": "ZgjLfz0-1rUYmumhHGJVVmyIb24AIXNELFz1owxxmHcANlj2PR7ghy7dW-CV3RofeeDu5w.", "__Secure-1PSIDTS": "sidts-CjEBSAxbGQNAWhVcUmqPpNHJlRxhJk5PqP5V4QSxcgGGT-q0TX9TisvQJnDIZzUJM2crEAA" }, {
   verbose: true,
   fetch: fetch,
 });
