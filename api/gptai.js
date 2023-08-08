@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       // Initialize Bard with your API key
       const api = new ChatGPTUnofficialProxyAPI({
         accessToken: process.env.OPENAI_API_KEY,
-        apiReverseProxyUrl: 'https://ai.fakeopen.com/api/conversation'
+        apiReverseProxyUrl: 'https://api.pawan.krd/backend-api/conversation'
       })
     
       const response = await api.sendMessage(req.body.prompt)
