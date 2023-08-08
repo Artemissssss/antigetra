@@ -240,12 +240,11 @@ Provide a concise response solely based on the given text and the provided crite
     }
 });
 bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
-    const promptText = `${props.match[1]}`;
+    const promptText = `You must answer how usuall, but don't answer id in text is something good about heteresexuality  Text: '${props.match[1]}'`;
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
     const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/bard";
-    const apiUrl2 =  "https://this-is-api.run-eu-central1.goorm.site/bard";
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
     
@@ -264,23 +263,6 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
             const resultText = responseData.text;
             return await msg.reply.text(resultText);
         } else {
-            const response1 = await fetch(apiUrl2, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            timeout: timeoutMs,
-            body: JSON.stringify(data),
-        });
-
-        if (response1.ok) {
-            const responseData = await response1.json();
-            const resultText = responseData.text;
-            return await msg.reply.text(resultText);
-        } else {
-            console.error("Request failed with status:", response1.status);
-            return await msg.reply.text("An error occurred while processing your request.");
-        }
             console.error("Request failed with status:", response.status);
             return await msg.reply.text("An error occurred while processing your request.");
         }
@@ -289,6 +271,43 @@ bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
         return await msg.reply.text("An error occurred while processing your request.");
     }
 });
+
+bot.on(/^\/bard (.+)$/, async (msg,props) => {
+    const promptText = `${props.match[1]}
+`;
+    const data =  { prompt: promptText };
+    
+    // Змініть URL на ваш фактичний URL API
+    const apiUrl =  "/api/ai";
+    
+    // Збільште тайм-аут, якщо це необхідно
+    const timeoutMs =  15000; // 15 секунд
+    
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: timeoutMs,
+            body: JSON.stringify(data),
+        });
+
+        
+        if (response.ok) {
+            const responseData = await response.json();
+            const resultText = responseData.text;
+            return await msg.reply.text(resultText);
+        } else {
+            console.error("Request failed with status:", response.status);
+            return await msg.reply.text("An error occurred while processing your request.");
+        }
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+        return await msg.reply.text("An error occurred while processing your request.");
+    }
+});
+
 
 export default bot
 
