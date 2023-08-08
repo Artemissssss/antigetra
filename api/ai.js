@@ -3,7 +3,7 @@ import Bard from "bard-ai";
 export default async function handler(req, res) {
   try {
     // Initialize Bard with your API key
-    let myBard = new Bard("sidts-CjEBSAxbGVpX6ZmbSpOeb0FxCsUnWEA0H5U3GX1MTA33x0UrWemYuQjSzcVB5T3lgfdJEAA");
+    let myBard = new Bard("APoG2W850EOKXy8Ru_QWKI8bANqaWzCuLYyaAUaPc_rdXnsriYHhhpfXhgWbKcSOseX3hjIEwg");
 
     // Use the askAI function here
     const response = await myBard.ask("Hello, world!")
