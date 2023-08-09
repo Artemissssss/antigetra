@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       const token = await chatGptAuthTokenService.getToken();
 
       const api = new ChatGPTUnofficialProxyAPI({
-        accessToken: token,
+        accessToken: "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",
         apiReverseProxyUrl: 'https://ai.fakeopen.com/api/conversation'
       })
     
