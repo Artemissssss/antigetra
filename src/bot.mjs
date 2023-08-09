@@ -210,7 +210,7 @@ Provide a concise response solely based on the given text and the provided crite
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt4-fake";
+    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/hercai";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
@@ -228,7 +228,7 @@ Provide a concise response solely based on the given text and the provided crite
         
         if (response.ok) {
             const responseData = await response.json();
-            const resultText = responseData.text;
+            const resultText = responseData.response;
             return await msg.reply.text(resultText);
         } else {
             console.error("Request failed with status:", response.status);
