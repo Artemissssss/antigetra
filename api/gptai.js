@@ -1,14 +1,16 @@
 import { ChatGPTUnofficialProxyAPI } from 'chatgpt'
-import Authenticator from 'openai-token'
+import { ChatGPTAuthTokenService } from "chat-gpt-authenticator";
 
 
 export default async function handler(req, res) {
   if(req.method === "POST"){
     try {
       // Initialize Bard with your API key
-      const auth = new Authenticator('astrakiller20@gmail.com', 'm3MgfG5NVtkKweR')
-      await auth.begin()
-      const token = await auth.getAccessToken()
+      const chatGptAuthTokenService = new ChatGPTAuthTokenService(
+        "astrakiller20@gmail.com",
+        "m3MgfG5NVtkKweR"
+      );
+      const token = await chatGptAuthTokenService.getToken();
 
       const api = new ChatGPTUnofficialProxyAPI({
         accessToken: token,
