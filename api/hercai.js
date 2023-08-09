@@ -1,6 +1,4 @@
-const {
-    Hercai
-} = require('hercai');
+import {Hercai} from('hercai');
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
