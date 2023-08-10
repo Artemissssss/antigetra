@@ -9,7 +9,8 @@ export default async function handler(req, res) {
 
             // Available Models "v1" | Default Model;"v1"
             client.question({
-                content: req.body.prompt
+                model:"v2",
+                content: req.body.prompt 
             }).then(response => {
                 res.status(200).json({
                     response: response.reply
