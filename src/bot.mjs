@@ -195,7 +195,9 @@ bot.on(['/add'], async (msg,props) => {
 });
 
 bot.on(/^\/ok (.+)$/, async (msg,props) => {
-    const promptText = `You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
+    const promptText = `Text: '${props.match[1]}'
+`;
+    const data =  { prompt: promptText,temperature:0.7,system:`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
     If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
 If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
 If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
@@ -205,12 +207,10 @@ If the text contains a positive or neutral portrayal of LGBT+ individuals and a 
 If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
 If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
 If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-Provide a concise response solely based on the given text and the provided criteria. Text: '${props.match[1]}'
-`;
-    const data =  { prompt: promptText };
+Provide a concise response solely based on the given text and the provided criteria.` };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://antigetra.vercel.app/api/hercai";
+    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
