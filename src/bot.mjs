@@ -415,6 +415,42 @@ bot.on(/^\/hercai (.+)$/, async (msg,props) => {
     }
 });
 
+bot.on(/^\/hercaibeta (.+)$/, async (msg,props) => {
+    const promptText = `${props.match[1]}`;
+    const data =  { prompt: promptText };
+    
+    // Змініть URL на ваш фактичний URL API
+    const apiUrl =  "https://antigetra.vercel.app/api/hercaibeta";
+    
+    // Збільште тайм-аут, якщо це необхідно
+    const timeoutMs =  15000; // 15 секунд
+    
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: timeoutMs,
+            body: JSON.stringify(data),
+        });
+
+        
+        if (response.ok) {
+            const responseData = await response.json();
+            const resultText = responseData.response;
+            return await msg.reply.text(resultText);
+        } else {
+            console.error("Request failed with status:", response.status);
+            return await msg.reply.text("An error occurred while processing your request.");
+        }
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+        return await msg.reply.text("An error occurred while processing your request.");
+    }
+});
+
+
 bot.on(/^\/hercaiimg (.+)$/, async (msg,props) => {
     const promptText = `${props.match[1]}`;
     const data =  { prompt: promptText };
