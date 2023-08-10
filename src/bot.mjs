@@ -163,7 +163,7 @@ bot.on("text", async msg => {
                             'Content-Type': 'application/json'
                         },
                         timeout: timeoutMs,
-                        body: JSON.stringify({prompt:msg.text}),
+                        body: JSON.stringify({input:msg.text}),
                     });
             
                     if (response.ok) {
@@ -442,7 +442,7 @@ bot.on("edit", async msg => {
                             'Content-Type': 'application/json'
                         },
                         timeout: timeoutMs,
-                        body: JSON.stringify({prompt:msg.text}),
+                        body: JSON.stringify({input:msg.text}),
                     });
             
                     if (response.ok) {
