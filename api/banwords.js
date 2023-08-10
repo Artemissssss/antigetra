@@ -9,5 +9,9 @@ export default async function handler(req, res) {
     const cursor = coll.find();
     const result = await cursor.toArray();
     await client.close();
-    res.status(200).json(result)
+    let newres = [];
+    for(let i =0; i <result.length;i++){
+ newres.push(result[i].text)
+    }
+    res.status(200).json(newres)
 }
