@@ -6,11 +6,11 @@ export default async function handler(req, res) {
   if(req.method === "POST"){
     try {
       // Initialize Bard with your API key
-      const chatGptAuthTokenService = new ChatGPTAuthTokenService(
-        "astrakiller20@gmail.com",
-        "m3MgfG5NVtkKweR"
-      );
-      const token = await chatGptAuthTokenService.getToken();
+      // const chatGptAuthTokenService = new ChatGPTAuthTokenService(
+      //   "astrakiller20@gmail.com",
+      //   "m3MgfG5NVtkKweR"
+      // );
+      // const token = await chatGptAuthTokenService.getToken();
 
       const api = new ChatGPTUnofficialProxyAPI({
         accessToken: "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",
