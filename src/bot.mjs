@@ -207,7 +207,16 @@ If the text contains a positive or neutral portrayal of LGBT+ individuals and a 
 If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
 If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
 If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-Provide a concise response solely based on the given text and the provided criteria.` };
+Example 1: heterosexuals are bad. Answer **null true**.
+Example 2: heterosexuals are cool. Answer **null false**.
+Example 3: gays cool. Answer **false null**.
+Example 4: gays bad. Answer **true null**.
+Example 5: hello. Answer **null null**.
+Example 6: gays cool and heterosexuals are bad. Answer **false true**.
+Example 7: gays bad and heterosexuals are cool. Answer **true false**.
+Example 8: gays cool and heterosexuals are cool. Answer **false false**.
+Example 9: gays bad and heterosexuals are bad. Answer **true true**.
+Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
     
     // Змініть URL на ваш фактичний URL API
     const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
