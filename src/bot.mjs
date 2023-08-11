@@ -169,88 +169,88 @@ bot.on("text", async msg => {
     //     if(resultR?.results[0].categories.hate || resultR?.results[0].categories.hate/threatening || resultR?.results[0].categories.harassment || resultR?.results[0].categories.violence || resultR?.results[0].categories.violence/graphic){
     //         banStatus = true;
     // }
-                if(!banStatus){
-                    const promptText = `Text: '${msg.text}'
-                `;
+//                 if(!banStatus){
+//                     const promptText = `Text: '${msg.text}'
+//                 `;
 
-                        const data =  { prompt: promptText,temperature:0.7,system:`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
-    If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
-If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
-If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
-If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
-If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
-If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
-If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
-If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-Example 1: heterosexuals are bad. Answer **null true**.
-Example 2: heterosexuals are cool. Answer **null false**.
-Example 3: gays cool. Answer **false null**.
-Example 4: gays bad. Answer **true null**.
-Example 5: hello. Answer **null null**.
-Example 6: gays cool and heterosexuals are bad. Answer **false true**.
-Example 7: gays bad and heterosexuals are cool. Answer **true false**.
-Example 8: gays cool and heterosexuals are cool. Answer **false false**.
-Example 9: gays bad and heterosexuals are bad. Answer **true true**.
-Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
+//                         const data =  { prompt: promptText,temperature:0.7,system:`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
+//     If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
+// If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
+// If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
+// If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
+// If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
+// If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
+// If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
+// If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
+// If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
+// Example 1: heterosexuals are bad. Answer **null true**.
+// Example 2: heterosexuals are cool. Answer **null false**.
+// Example 3: gays cool. Answer **false null**.
+// Example 4: gays bad. Answer **true null**.
+// Example 5: hello. Answer **null null**.
+// Example 6: gays cool and heterosexuals are bad. Answer **false true**.
+// Example 7: gays bad and heterosexuals are cool. Answer **true false**.
+// Example 8: gays cool and heterosexuals are cool. Answer **false false**.
+// Example 9: gays bad and heterosexuals are bad. Answer **true true**.
+// Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
                     
-                    // Змініть URL на ваш фактичний URL API
-                    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
+//                     // Змініть URL на ваш фактичний URL API
+//                     const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
                     
-                    // Збільште тайм-аут, якщо це необхідно
-                    const timeoutMs =  15000; // 15 секунд
+//                     // Збільште тайм-аут, якщо це необхідно
+//                     const timeoutMs =  15000; // 15 секунд
                     
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            timeout: timeoutMs,
-                            body: JSON.stringify(data),
-                        });
+//                     try {
+//                         const response = await fetch(apiUrl, {
+//                             method: 'POST',
+//                             headers: {
+//                                 'Content-Type': 'application/json'
+//                             },
+//                             timeout: timeoutMs,
+//                             body: JSON.stringify(data),
+//                         });
                 
-                        if (response.ok) {
-                            const responseData = await response.json();
-                            const resultText = responseData.text;
-                            if(resultText.includes("null")){
-                                if(resultText.includes("true")){
-                                    if(resultText.indexOf("true")<resultText.indexOf("null")){
-                                        banStatus=true;
-                                    }else{
-                                        banStatus=false;
-                                    }
-                                }else if(resultText.includes("false")){
-                                    if(resultText.indexOf("false")>resultText.indexOf("null")){
-                                        banStatus=true;
-                                        msg.reply.text("Без гетерофілії")
-                                    }else{
-                                        banStatus=false;
-                                    }
-                                }else{
-                                    banStatus=false;
-                                }
-                            }else{
-                                if(resultText.includes("true true")){
-                                    banStatus=true;
-                                }else if(resultText.includes("true false")){
-                                    banStatus=true;         
-                                }else if(resultText.includes("false false")){
-                                    banStatus=true;
-                                    msg.reply.text("Без гетерофілії")        
-                                }else if(resultText.includes("false true")){
-                                    banStatus=false;     
-                                }
-                            }
-                        } else {
-                            console.error("Request failed with status:", response.status);
-                             await msg.reply.text("An error occurred while processing your request.");
-                        }
-                    } catch (error) {
-                        console.error("Error occurred:", error.message);
-                         await msg.reply.text("An error occurred while processing your request.");
-                    }
-                }
+//                         if (response.ok) {
+//                             const responseData = await response.json();
+//                             const resultText = responseData.text;
+//                             if(resultText.includes("null")){
+//                                 if(resultText.includes("true")){
+//                                     if(resultText.indexOf("true")<resultText.indexOf("null")){
+//                                         banStatus=true;
+//                                     }else{
+//                                         banStatus=false;
+//                                     }
+//                                 }else if(resultText.includes("false")){
+//                                     if(resultText.indexOf("false")>resultText.indexOf("null")){
+//                                         banStatus=true;
+//                                         msg.reply.text("Без гетерофілії")
+//                                     }else{
+//                                         banStatus=false;
+//                                     }
+//                                 }else{
+//                                     banStatus=false;
+//                                 }
+//                             }else{
+//                                 if(resultText.includes("true true")){
+//                                     banStatus=true;
+//                                 }else if(resultText.includes("true false")){
+//                                     banStatus=true;         
+//                                 }else if(resultText.includes("false false")){
+//                                     banStatus=true;
+//                                     msg.reply.text("Без гетерофілії")        
+//                                 }else if(resultText.includes("false true")){
+//                                     banStatus=false;     
+//                                 }
+//                             }
+//                         } else {
+//                             console.error("Request failed with status:", response.status);
+//                              await msg.reply.text("An error occurred while processing your request.");
+//                         }
+//                     } catch (error) {
+//                         console.error("Error occurred:", error.message);
+//                          await msg.reply.text("An error occurred while processing your request.");
+//                     }
+//                 }
             }
         }
     }
