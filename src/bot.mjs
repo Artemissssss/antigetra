@@ -662,7 +662,7 @@ bot.on(/^\/gpt (.+)$/, async (msg,props) => {
             const coll = client.db('banwords').collection('lgbtqplus');
             const result = await coll.insertOne({text:resultText})
             await client.close();
-            return await msg.reply.text(resultText);
+            return await msg.reply.text(resultText.text);
         } else {
             console.error("Request failed with status:", response.status);
             return await msg.reply.text("An error occurred while processing your request.");
