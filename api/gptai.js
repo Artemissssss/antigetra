@@ -15,7 +15,7 @@ async function main(requestText) {
   const response = await chatGPT.sendMessage(requestText);
 
   // Виводимо відповідь від ChatGPT
-  return response.text;
+  return response;
 }
 
 
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
       // Send the response back as JSON
       await res.status(200).json({
-        response: main(req.body.prompt)
+        response: await main(req.body.prompt)
       });
 
     } catch (error) {
