@@ -151,25 +151,24 @@ bot.on("text", async msg => {
                 };
             };
  if(!banStatus){///moderations
-    let resultR;
-    await fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          input: msg.text
-        })
-      })
-        .then(async response => await response.json())
-        .then(data => {resultR = data
-       
-        })
-        .catch(error => console.error('Помилка:', error));
+    // let resultR;
+    // await fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       input: msg.text
+    //     })
+    //   })
+    //     .then(async response => await response.json())
+    //     .then(data => {resultR = data
+    //     })
+    //     .catch(error => console.error('Помилка:', error));
 
-        if(resultR?.results[0].categories.hate || resultR?.results[0].categories.hate/threatening || resultR?.results[0].categories.harassment || resultR?.results[0].categories.violence || resultR?.results[0].categories.violence/graphic){
-            banStatus = true;
-    }
+    //     if(resultR?.results[0].categories.hate || resultR?.results[0].categories.hate/threatening || resultR?.results[0].categories.harassment || resultR?.results[0].categories.violence || resultR?.results[0].categories.violence/graphic){
+    //         banStatus = true;
+    // }
                 if(!banStatus){
                     const promptText = `Text: '${msg.text}'
                 `;
