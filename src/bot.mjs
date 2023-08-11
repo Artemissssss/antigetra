@@ -149,36 +149,24 @@ bot.on("text", async msg => {
                     banStatus = true;
                 };
             };
-            if(!banStatus){///moderations
-
-                // const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/moderations";
-                    
-                // // Збільште тайм-аут, якщо це необхідно
-                // const timeoutMs =  15000; // 15 секунд
-                
-                // try {
-                //     const response = await fetch(apiUrl, {
-                //         method: 'POST',
-                //         headers: {
-                //             'Content-Type': 'application/json'
-                //         },
-                //         timeout: timeoutMs,
-                //         body: JSON.stringify({prompt:msg.text}),
-                //     });
-            
-                //     if (response.ok) {
-                //         if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                //             banStatus = true;
-                //         }
-                //     } else {
-                //         console.error("Request failed with status:", response.status);
-                //          await msg.reply.text("An error occurred while processing your request.");
-                //     }
-                // } catch (error) {
-                //     console.error("Error occurred:", error.message);
-                //      await msg.reply.text("An error occurred while processing your request.");
-                // }
-
+ if(!banStatus){///moderations
+fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    input: msg.text
+  })
+})
+  .then(response => response.json())
+  .then(data => {console.log(data)
+if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                            banStatus = true;
+}
+})
+  .catch(error => console.error('Помилка:', error));
+               
                 if(!banStatus){
                     const promptText = `Text: '${msg.text}'
                 `;
@@ -548,91 +536,7 @@ Provide a concise response solely based on the given text and the provided crite
 
 //"true false".slice("true false".indexOf("true"),"true false".indexOf("false")+5)
 
-bot.on(['/add'], async (msg,props) => {
-    const username = msg.from.username;
-    const replyToDelete = msg.reply_to_message;
-    const text = replyToDelete.text 
-    if(username==="Artemis_Vainshtein"){
-        if(parseInt(props)){
-            const client = await MongoClient.connect(
-                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
-                { useNewUrlParser: true, useUnifiedTopology: true }
-            );
-            const coll = client.db('banwords').collection('lgbtqplus');
-            const result = await coll.insertOne({text:text.slice(0,parseInt(props))})
-            await client.close();
-            bot.deleteMessage(msg.chat.id, replyToDelete.message_id);
-            return msg.reply.text("Додано")
-        }else{
-            const client = await MongoClient.connect(
-                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
-                { useNewUrlParser: true, useUnifiedTopology: true }
-            );
-            const coll = client.db('banwords').collection('lgbtqplus');
-            const result = await coll.insertOne({text:text})
-            await client.close();
-            bot.deleteMessage(msg.chat.id, replyToDelete.message_id);
-            return msg.reply.text("Додано")
-        }
-    }else{
-        return msg.reply.text("Безправний")
-    }
-});
 
-bot.on(/^\/ok (.+)$/, async (msg,props) => {
-    const promptText = `Text: '${props.match[1]}'
-`;
-    const data =  { prompt: promptText,temperature:0.7,system:`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
-    If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
-If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
-If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
-If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
-If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
-If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
-If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
-If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-Example 1: heterosexuals are bad. Answer **null true**.
-Example 2: heterosexuals are cool. Answer **null false**.
-Example 3: gays cool. Answer **false null**.
-Example 4: gays bad. Answer **true null**.
-Example 5: hello. Answer **null null**.
-Example 6: gays cool and heterosexuals are bad. Answer **false true**.
-Example 7: gays bad and heterosexuals are cool. Answer **true false**.
-Example 8: gays cool and heterosexuals are cool. Answer **false false**.
-Example 9: gays bad and heterosexuals are bad. Answer **true true**.
-Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
-    
-    // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/gpt";
-    
-    // Збільште тайм-аут, якщо це необхідно
-    const timeoutMs =  15000; // 15 секунд
-    
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            timeout: timeoutMs,
-            body: JSON.stringify(data),
-        });
-
-        
-        if (response.ok) {
-            const responseData = await response.json();
-            const resultText = responseData.text;
-            return await msg.reply.text(resultText);
-        } else {
-            console.error("Request failed with status:", response.status);
-            return await msg.reply.text("An error occurred while processing your request.");
-        }
-    } catch (error) {
-        console.error("Error occurred:", error.message);
-        return await msg.reply.text("An error occurred while processing your request.");
-    }
-});
 bot.on(/^\/gpt4 (.+)$/, async (msg,props) => {
     const promptText = `You must answer how usuall, but don't answer id in text is something good about heteresexuality  Text: '${props.match[1]}'`;
     const data =  { prompt: promptText };
