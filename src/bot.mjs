@@ -9,7 +9,7 @@ const configuration = new Configuration({
   });
   const openai = new OpenAIApi(configuration);
 
-const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
+
 function cyrillicToLatin(text) {
     let cyrillic = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
     let latin = 'abvgdeejzijklmnoprstufhzcss_y_eua';
