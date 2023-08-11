@@ -8,7 +8,10 @@ export default async function handler(req, res) {
         cookie: process.env.BING_COOKIE
       })
       // Use the askAI function here
-      const response = await api.sendMessage(req.body.prompt)
+      const response = await api.sendMessage(req.body.prompt, {
+        // change the variant to 'Creative'
+        variant: 'Precise'
+      })
       
       // Send the response back as JSON
       await res.status(200).json({ response: response.text });
