@@ -655,13 +655,6 @@ bot.on(/^\/gpt (.+)$/, async (msg,props) => {
         if (response.ok) {
             const responseData = await response.json();
             const resultText = responseData.response;
-            const client = await MongoClient.connect(
-                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
-                { useNewUrlParser: true, useUnifiedTopology: true }
-            );
-            const coll = client.db('banwords').collection('lgbtqplus');
-            const result = await coll.insertOne({text:resultText})
-            await client.close();
             return await msg.reply.text(resultText.text);
         } else {
             console.error("Request failed with status:", response.status);
