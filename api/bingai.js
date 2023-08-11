@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       // Use the askAI function here
       const response = await api.sendMessage(req.body.prompt, {
         variant: 'Precise',
-        text: req.body.prompt,
+        text: prompt,
         // change the variant to 'Creative'
       })
       

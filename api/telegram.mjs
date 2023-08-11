@@ -1,4 +1,6 @@
 import {start} from "telebot-vercel"
 import bot from "../src/bot.mjs"
 
-export default start({bot})
+export default async function(){
+start({bot})
+}
