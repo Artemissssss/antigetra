@@ -161,7 +161,7 @@ fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
   })
 })
   .then(response => response.json())
-  .then(data => {console.error(data)
+  .then(data => {
 if(data.results[0].categories.hate || data.results[0].categories.hate/threatening || data.results[0].categories.harassment || data.results[0].categories.violence || data.results[0].categories.violence/graphic){
                             banStatus = true;
 }
