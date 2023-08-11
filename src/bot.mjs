@@ -151,35 +151,36 @@ bot.on("text", async msg => {
             };
             if(!banStatus){///moderations
 
-                const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/moderations";
+                // const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/moderations";
                     
-                // Збільште тайм-аут, якщо це необхідно
-                const timeoutMs =  15000; // 15 секунд
+                // // Збільште тайм-аут, якщо це необхідно
+                // const timeoutMs =  15000; // 15 секунд
                 
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        timeout: timeoutMs,
-                        body: JSON.stringify({input:msg.text}),
-                    });
+                // try {
+                //     const response = await fetch(apiUrl, {
+                //         method: 'POST',
+                //         headers: {
+                //             'Content-Type': 'application/json'
+                //         },
+                //         timeout: timeoutMs,
+                //         body: JSON.stringify({prompt:msg.text}),
+                //     });
             
-                    if (response.ok) {
-                        if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-                            banStatus = true;
-                        }
-                    } else {
-                        console.error("Request failed with status:", response.status);
-                         await msg.reply.text("An error occurred while processing your request.");
-                    }
-                } catch (error) {
-                    console.error("Error occurred:", error.message);
-                     await msg.reply.text("An error occurred while processing your request.");
-                }
+                //     if (response.ok) {
+                //         if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                //             banStatus = true;
+                //         }
+                //     } else {
+                //         console.error("Request failed with status:", response.status);
+                //          await msg.reply.text("An error occurred while processing your request.");
+                //     }
+                // } catch (error) {
+                //     console.error("Error occurred:", error.message);
+                //      await msg.reply.text("An error occurred while processing your request.");
+                // }
 
-                if(!banStatus){const promptText = `Text: '${msg.text}'
+                if(!banStatus){
+                    const promptText = `Text: '${msg.text}'
                 `;
 
                         const data =  { prompt: promptText,temperature:0.7,system:`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
@@ -442,7 +443,7 @@ bot.on("edit", async msg => {
                             'Content-Type': 'application/json'
                         },
                         timeout: timeoutMs,
-                        body: JSON.stringify({input:msg.text}),
+                        body: JSON.stringify({prompt:msg.text}),
                     });
             
                     if (response.ok) {
