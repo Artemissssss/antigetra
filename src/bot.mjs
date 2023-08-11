@@ -419,33 +419,23 @@ bot.on("edit", async msg => {
             };
             if(!banStatus){///moderations
 
-                const apiUrl =  "https://this-is-api.run-eu-central1.goorm.site/moderations";
-                    
-                // Збільште тайм-аут, якщо це необхідно
-                const timeoutMs =  15000; // 15 секунд
-                
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        timeout: timeoutMs,
-                        body: JSON.stringify({prompt:msg.text}),
-                    });
-            
-                    if (response.ok) {
-                        if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
+                fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    input: msg.text
+  })
+})
+  .then(response => response.json())
+  .then(data => {console.log(data)
+if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
                             banStatus = true;
-                        }
-                    } else {
-                        console.error("Request failed with status:", response.status);
-                         await msg.reply.text("An error occurred while processing your request.");
-                    }
-                } catch (error) {
-                    console.error("Error occurred:", error.message);
-                     await msg.reply.text("An error occurred while processing your request.");
-                }
+}
+})
+  .catch(error => console.error('Помилка:', error));
+               
 
                 if(!banStatus){const promptText = `Text: '${msg.text}'
                 `;
@@ -665,6 +655,13 @@ bot.on(/^\/gpt (.+)$/, async (msg,props) => {
         if (response.ok) {
             const responseData = await response.json();
             const resultText = responseData.response;
+            const client = await MongoClient.connect(
+                `mongodb+srv://${process.env.NEXT_PUBLIC_DATABASE_USER}:${process.env.NEXT_PUBLIC_DATABASE_PASSWORD}@${process.env.NEXT_PUBLIC_DATABASE}/?retryWrites=true&w=majority`,
+                { useNewUrlParser: true, useUnifiedTopology: true }
+            );
+            const coll = client.db('banwords').collection('lgbtqplus');
+            const result = await coll.insertOne({text:resultText})
+            await client.close();
             return await msg.reply.text(resultText);
         } else {
             console.error("Request failed with status:", response.status);
