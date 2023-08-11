@@ -151,32 +151,23 @@ bot.on("text", async msg => {
                 };
             };
  if(!banStatus){///moderations
-
-    try {
-        const response = await fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                input: msg.text
-              }),
-        });
-
-        if (response.ok) {
-            const responseData = await response.json();
-            if(responseData.results[0].categories.hate || responseData.results[0].categories.hate/threatening || responseData.results[0].categories.harassment || responseData.results[0].categories.violence || responseData.results[0].categories.violence/graphic){
+    fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          input: msg.text
+        })
+      })
+        .then(response => response.json())
+        .then(data => {console.log(data)
+            if(data.results[0].categories.hate || data.results[0].categories.hate/threatening || data.results[0].categories.harassment || data.results[0].categories.violence || data.results[0].categories.violence/graphic){
                 banStatus = true;
-}
-        } else {
-            console.error("Request failed with status:", response.status);
-             await msg.reply.text("An error occurred while processing your request.");
-        }
-    } catch (error) {
-        console.error("Error occurred:", error.message);
-         await msg.reply.text("An error occurred while processing your request.");
-    }
-               
+        }       
+        })
+        .catch(error => console.error('Помилка:', error));
+    
                 if(!banStatus){
                     const promptText = `Text: '${msg.text}'
                 `;
