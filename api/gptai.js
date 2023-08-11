@@ -3,7 +3,8 @@ import { ChatGPTUnofficialProxyAPI }  from 'chatgpt';
 async function main(requestText) {
   // Створюємо новий екземпляр ChatGPTUnofficialProxyAPI
   const chatGPT = new ChatGPTUnofficialProxyAPI({
-    apiKey: process.env.OPENAI_API_KEY
+    apiKey: process.env.OPENAI_API_KEY,
+    apiReverseProxyUrl:"https://ai.fakeopen.com/api/conversation"
   });
 
   // Встановлюємо параметри для ChatGPT
