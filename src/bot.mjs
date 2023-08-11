@@ -94,7 +94,7 @@ bot.on("text", async msg => {
     .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n').replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e'))
     .replace(/ґ/i, 'г').replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("");
     let banStatus = false;
-    const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","heterö","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
+    const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","het","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
     const username = msg.from.username;
     if(username!=="Artemis_Vainshtein" && msg.from.id !=="1647838471" && msg.from.id !=="833961178" && msg.from.id !=="1128434712" &&msg.from.id !=="888466576" && msg.from.id !=="752317094" && msg.from.id !=="628452250"){
         for(let i = 0; i<banWords.length;i++){
@@ -151,22 +151,32 @@ bot.on("text", async msg => {
                 };
             };
  if(!banStatus){///moderations
-// fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     input: msg.text
-//   })
-// })
-//   .then(response => response.json())
-//   .then(data => {
-// if(data.results[0].categories.hate || data.results[0].categories.hate/threatening || data.results[0].categories.harassment || data.results[0].categories.violence || data.results[0].categories.violence/graphic){
-//                             banStatus = true;
-// }
-// })
-//   .catch(error => console.error('Помилка:', error));
+
+    try {
+        const response = await fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: timeoutMs,
+            body: JSON.stringify({
+                input: msg.text
+              }),
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            if(responseData.results[0].categories.hate || responseData.results[0].categories.hate/threatening || responseData.results[0].categories.harassment || responseData.results[0].categories.violence || responseData.results[0].categories.violence/graphic){
+                banStatus = true;
+}
+        } else {
+            console.error("Request failed with status:", response.status);
+             await msg.reply.text("An error occurred while processing your request.");
+        }
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+         await msg.reply.text("An error occurred while processing your request.");
+    }
                
                 if(!banStatus){
                     const promptText = `Text: '${msg.text}'
@@ -248,7 +258,8 @@ Provide a concise response solely based on the given text and the provided crite
                     } catch (error) {
                         console.error("Error occurred:", error.message);
                          await msg.reply.text("An error occurred while processing your request.");
-                    }}
+                    }
+                }
             }
         }
     }
