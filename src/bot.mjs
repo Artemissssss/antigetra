@@ -158,7 +158,6 @@ bot.on("text", async msg => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            timeout: timeoutMs,
             body: JSON.stringify({
                 input: msg.text
               }),
