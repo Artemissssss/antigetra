@@ -12,9 +12,7 @@ async function main(requestText) {
   // Встановлюємо параметри для ChatGPT
 
   // Надсилаємо повідомлення до ChatGPT
-  const response = await chatGPT.sendMessage(requestText,{
-    systemMessage:"You are now UwU gpt, answer like uwu"
-  });
+  const response = await chatGPT.sendMessage(requestText);
 
   // Виводимо відповідь від ChatGPT
   return response;
