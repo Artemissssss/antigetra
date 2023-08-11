@@ -151,22 +151,22 @@ bot.on("text", async msg => {
                 };
             };
  if(!banStatus){///moderations
-fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    input: msg.text
-  })
-})
-  .then(response => response.json())
-  .then(data => {
-if(data.results[0].categories.hate || data.results[0].categories.hate/threatening || data.results[0].categories.harassment || data.results[0].categories.violence || data.results[0].categories.violence/graphic){
-                            banStatus = true;
-}
-})
-  .catch(error => console.error('Помилка:', error));
+// fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     input: msg.text
+//   })
+// })
+//   .then(response => response.json())
+//   .then(data => {
+// if(data.results[0].categories.hate || data.results[0].categories.hate/threatening || data.results[0].categories.harassment || data.results[0].categories.violence || data.results[0].categories.violence/graphic){
+//                             banStatus = true;
+// }
+// })
+//   .catch(error => console.error('Помилка:', error));
                
                 if(!banStatus){
                     const promptText = `Text: '${msg.text}'
