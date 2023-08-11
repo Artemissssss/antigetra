@@ -13,7 +13,7 @@ export default async function handler(req, res) {
                 content: req.body.prompt
             }).then(response => {
                 res.status(200).json({
-                    response: response.reply
+                    response: "Hello"
                 });
             });
         } catch (error) {
