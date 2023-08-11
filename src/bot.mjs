@@ -161,7 +161,7 @@ bot.on("text", async msg => {
         })
       })
         .then(async response => await response.json())
-        .then(data => {console.log(data)
+        .then(data => {console.log(data,data.results)
             if(data?.results[0].categories.hate || data?.results[0].categories.hate/threatening || data?.results[0].categories.harassment || data?.results[0].categories.violence || data?.results[0].categories.violence/graphic){
                 banStatus = true;
         }       
