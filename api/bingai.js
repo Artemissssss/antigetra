@@ -9,8 +9,9 @@ export default async function handler(req, res) {
       })
       // Use the askAI function here
       const response = await api.sendMessage(req.body.prompt, {
+        variant: 'Precise',
+        text: prompt,
         // change the variant to 'Creative'
-        variant: 'Precise'
       })
       
       // Send the response back as JSON
