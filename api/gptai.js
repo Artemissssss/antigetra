@@ -1,4 +1,4 @@
-const { ChatGPTUnofficialProxyAPI } = require('chatgpt');
+import { ChatGPTUnofficialProxyAPI }  from 'chatgpt';
 
 async function main(requestText) {
   // Створюємо новий екземпляр ChatGPTUnofficialProxyAPI
