@@ -30,8 +30,7 @@ export default async function handler(req, res) {
     await claude.init();
     
     const conversation = await claude.startConversation("hello there");
-    await conversation.sendMessage('How are you today?',{done:(ress) =>{console.log(ress)}});
-    console.log(conversation.getInfo())
+    await conversation.sendMessage('How are you today?',{done:(ress) =>{console.log(ress.completion)}});
     res.status(403).json({message:"Not for this", okay:conversation,"Ffdsf":conversation.getInfo()})
   }
 }
