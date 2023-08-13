@@ -778,6 +778,7 @@ bot.on(/^\/hercaiimg (.+)$/, async (msg,props) => {
 });
 bot.on(/^\/claude (.+)$/, async (msg,props) => {
     const promptText = `${props.match[1]}`;
+    msg.reply.text(promptText)
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
