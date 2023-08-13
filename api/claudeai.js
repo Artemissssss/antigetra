@@ -23,6 +23,14 @@ export default async function handler(req, res) {
       res.status(500).json({ error: "Internal server error" });
     }
   }else{
-    res.status(403).json({message:"Not for this"})
+    const claude = new Claude({
+      sessionKey: process.env.CLAUDE_SES
+    });
+    
+    await claude.init();
+    
+    const conversation = await claude.startConversation(req.body.prompt);
+    console.log(conversation)
+    res.status(403).json({message:"Not for this", okay:conversation})
   }
 }
