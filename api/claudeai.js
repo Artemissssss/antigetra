@@ -47,7 +47,7 @@ Example 8: gays cool and heterosexuals are cool. Answer **false false**.
 Example 9: gays bad and heterosexuals are bad. Answer **true true**.
 Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
 Text:'gays cool and heteresexuals bad'
-`,{model:"claude-instant-100k",done:(ress) =>{res.status(200).json({ response: ress.completion });}})
+`,{done:(ress) =>{res.status(200).json({ response: ress.completion });}})
     // res.status(403).json({message:"Not for this"})
   }
 }
