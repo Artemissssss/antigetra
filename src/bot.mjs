@@ -212,7 +212,7 @@ bot.on("text", async msg => {
                 
                         if (response.ok) {
                             const responseData = await response.json();
-                            const resultText = responseData.text;
+                            const resultText = responseData.response;
                             if(resultText.includes("null")){
                                 if(resultText.includes("true")){
                                     if(resultText.indexOf("true")<resultText.indexOf("null")){
@@ -783,7 +783,7 @@ bot.on(/^\/claude (.+)$/, async (msg,props) => {
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
+    const apiUrl =  "https://antigetra.vercel.app/api/claude";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
