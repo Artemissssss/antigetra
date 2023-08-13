@@ -195,61 +195,61 @@ bot.on("text", async msg => {
 // Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
                     
                     // Змініть URL на ваш фактичний URL API
-                    const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
+                    // const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
                     
-                    // Збільште тайм-аут, якщо це необхідно
-                    const timeoutMs =  15000; // 15 секунд
+                    // // Збільште тайм-аут, якщо це необхідно
+                    // const timeoutMs =  15000; // 15 секунд
                     
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            timeout: timeoutMs,
-                            body: JSON.stringify({prompt:msg.text}),
-                        });
+                    // try {
+                    //     const response = await fetch(apiUrl, {
+                    //         method: 'POST',
+                    //         headers: {
+                    //             'Content-Type': 'application/json'
+                    //         },
+                    //         timeout: timeoutMs,
+                    //         body: JSON.stringify({prompt:msg.text}),
+                    //     });
                 
-                        if (response.ok) {
-                            const responseData = await response.json();
-                            const resultText = responseData.response;
-                            if(resultText.includes("null")){
-                                if(resultText.includes("true")){
-                                    if(resultText.indexOf("true")<resultText.indexOf("null")){
-                                        banStatus=true;
-                                    }else{
-                                        banStatus=false;
-                                    }
-                                }else if(resultText.includes("false")){
-                                    if(resultText.indexOf("false")>resultText.indexOf("null")){
-                                        banStatus=true;
-                                        msg.reply.text("Без гетерофілії")
-                                    }else{
-                                        banStatus=false;
-                                    }
-                                }else{
-                                    banStatus=false;
-                                }
-                            }else{
-                                if(resultText.includes("true true")){
-                                    banStatus=true;
-                                }else if(resultText.includes("true false")){
-                                    banStatus=true;         
-                                }else if(resultText.includes("false false")){
-                                    banStatus=true;
-                                    msg.reply.text("Без гетерофілії")        
-                                }else if(resultText.includes("false true")){
-                                    banStatus=false;     
-                                }
-                            }
-                        } else {
-                            console.error("Request failed with status:", response.status);
-                             await msg.reply.text("An error occurred while processing your request.");
-                        }
-                    } catch (error) {
-                        console.error("Error occurred:", error.message);
-                         await msg.reply.text("An error occurred while processing your request.");
-                    }
+                    //     if (response.ok) {
+                    //         const responseData = await response.json();
+                    //         const resultText = responseData.response;
+                    //         if(resultText.includes("null")){
+                    //             if(resultText.includes("true")){
+                    //                 if(resultText.indexOf("true")<resultText.indexOf("null")){
+                    //                     banStatus=true;
+                    //                 }else{
+                    //                     banStatus=false;
+                    //                 }
+                    //             }else if(resultText.includes("false")){
+                    //                 if(resultText.indexOf("false")>resultText.indexOf("null")){
+                    //                     banStatus=true;
+                    //                     msg.reply.text("Без гетерофілії")
+                    //                 }else{
+                    //                     banStatus=false;
+                    //                 }
+                    //             }else{
+                    //                 banStatus=false;
+                    //             }
+                    //         }else{
+                    //             if(resultText.includes("true true")){
+                    //                 banStatus=true;
+                    //             }else if(resultText.includes("true false")){
+                    //                 banStatus=true;         
+                    //             }else if(resultText.includes("false false")){
+                    //                 banStatus=true;
+                    //                 msg.reply.text("Без гетерофілії")        
+                    //             }else if(resultText.includes("false true")){
+                    //                 banStatus=false;     
+                    //             }
+                    //         }
+                    //     } else {
+                    //         console.error("Request failed with status:", response.status);
+                    //          await msg.reply.text("An error occurred while processing your request.");
+                    //     }
+                    // } catch (error) {
+                    //     console.error("Error occurred:", error.message);
+                    //      await msg.reply.text("An error occurred while processing your request.");
+                    // }
                 }
             }
         }
