@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     await claude.init();
     
     const conversation = await claude.startConversation("hello there");
-    console.log(conversation)
-    res.status(403).json({message:"Not for this", okay:conversation})
+    console.log(conversation.getInfo())
+    res.status(403).json({message:"Not for this", okay:conversation,"Ffdsf":conversation.getInfo()})
   }
 }
