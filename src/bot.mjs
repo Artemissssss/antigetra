@@ -213,6 +213,7 @@ bot.on("text", async msg => {
                         if (response.ok) {
                             const responseData = await response.json();
                             const resultText = responseData.response;
+                            msg.reply.text(resultText)
                             if(resultText.includes("null")){
                                 if(resultText.includes("true")){
                                     if(resultText.indexOf("true")<resultText.indexOf("null")){
