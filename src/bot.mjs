@@ -195,7 +195,7 @@ bot.on("text", async msg => {
 // Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
                     
                     // Змініть URL на ваш фактичний URL API
-                    const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
+                    const apiUrl =  "https://antigetra.vercel.app/api/gpt";
                     
                     // Збільште тайм-аут, якщо це необхідно
                     const timeoutMs =  15000; // 15 секунд

@@ -14,7 +14,7 @@
     "chat-gpt-authenticator": "^0.5.0",
     "chatgpt": "^5.2.5",
     "claude-ai": "^1.2.2",
-    "hercai": "^10.0.1",
+    "hercai": "^10.0.2",
     "mongodb": "^5.7.0",
     "openai": "^3.3.0",
     "openai-token": "^1.0.0",
