@@ -212,7 +212,7 @@ bot.on("text", async msg => {
                 
                         if (response.ok) {
                             const responseData = await response.json();
-                            const resultText = responseData.response;
+                            const resultText = responseData.response.toLowerCase();
                             // msg.reply.text(resultText)
                             if(resultText.includes("null")){
                                 if(resultText.includes("true")){
@@ -484,7 +484,7 @@ bot.on("edit", async msg => {
                 
                         if (response.ok) {
                             const responseData = await response.json();
-                            const resultText = responseData.text;
+                            const resultText = responseData.response.toLowerCase();
                             if(resultText.includes("null")){
                                 if(resultText.includes("true")){
                                     if(resultText.indexOf("true")<resultText.indexOf("null")){
