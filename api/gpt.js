@@ -34,7 +34,7 @@ Example 9: gays bad and heterosexuals are bad. Answer **true true**.
 Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
 Text:'${requestText}'
 `);
-  
+  console.log(response)
     // Виводимо відповідь від ChatGPT
     return response;
   }
@@ -61,7 +61,7 @@ Text:'${requestText}'
   
         // Send the response back as JSON
         await res.status(200).json({
-          response: await main(req.body.prompt)
+          response: main(req.body.prompt)
         });
   
       } catch (error) {
