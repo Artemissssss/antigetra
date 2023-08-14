@@ -2,46 +2,6 @@ import {
     ChatGPTUnofficialProxyAPI
   } from 'chatgpt';
   
-  async function main(requestText) {
-    // Створюємо новий екземпляр ChatGPTUnofficialProxyAPI
-    const chatGPT = new ChatGPTUnofficialProxyAPI({
-      accessToken: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJhc3RyYWtpbGxlcjIwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlfSwiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS9hdXRoIjp7InVzZXJfaWQiOiJ1c2VyLWNseTJtQmc3TlRnb0VCMVlnY2RXbkRQcyJ9LCJpc3MiOiJodHRwczovL2F1dGgwLm9wZW5haS5jb20vIiwic3ViIjoiYXV0aDB8NjRkMjk4N2UyMmRlOWEyMGE1YTM2MzM3IiwiYXVkIjpbImh0dHBzOi8vYXBpLm9wZW5haS5jb20vdjEiLCJodHRwczovL29wZW5haS5vcGVuYWkuYXV0aDBhcHAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY5MTc1MTQ2NywiZXhwIjoxNjkyOTYxMDY3LCJhenAiOiJUZEpJY2JlMTZXb1RIdE45NW55eXdoNUU0eU9vNkl0RyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgbW9kZWwucmVhZCBtb2RlbC5yZXF1ZXN0IG9yZ2FuaXphdGlvbi5yZWFkIG9yZ2FuaXphdGlvbi53cml0ZSBvZmZsaW5lX2FjY2VzcyJ9.b1yW2J1TPUqBAyRUXQwhepNMx2DQDjygY50Xfs2xWajvTsoP1w2Wat3whMEc2DT7NkfxD9UzpgtRGq4sTl_wbdL4aCoCr1bWGl1KiW-1XTME_Vk53tAWEoXP-Tdwn_-YYmf_YFTP84xcKNd3frPMYEkAcp6dqVgslzKifcdmFSIwM7hCHGX-w1rbFOT51_TekBk-UNkAP6nhUY_TzCCI7UP56q_baDTfxS7kHWfgHKFt7naMnjjCvj9VEe5JmyLOMR-Lb3WCjGVacrgopCPNZK-NjGrXjYtHp1uGSh8f7SwjWEaEh_L7eBAjW6TzO134EGFJfZyO47R3HCx4hmeq3Q",
-      apiReverseProxyUrl: "https://ai.fakeopen.com/api/conversation"
-    });
-  
-    // Встановлюємо параметри для ChatGPT
-  
-    // Надсилаємо повідомлення до ChatGPT
-    const response = await chatGPT.sendMessage(`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
-    If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
-If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
-If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
-If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
-If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
-If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
-If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
-If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-Example 1: heterosexuals are bad. Answer **null true**.
-Example 2: heterosexuals are cool. Answer **null false**.
-Example 3: gays cool. Answer **false null**.
-Example 4: gays bad. Answer **true null**.
-Example 5: hello. Answer **null null**.
-Example 6: gays cool and heterosexuals are bad. Answer **false true**.
-Example 7: gays bad and heterosexuals are cool. Answer **true false**.
-Example 8: gays cool and heterosexuals are cool. Answer **false false**.
-Example 9: gays bad and heterosexuals are bad. Answer **true true**.
-Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
-Text:'${requestText}'
-`);
-  console.log(response)
-    // Виводимо відповідь від ChatGPT
-    return response;
-  }
-  
-  
-  
-  
   export default async function handler(req, res) {
     if (req.method === "POST") {
       try {
@@ -60,8 +20,39 @@ Text:'${requestText}'
         // const response = await api.sendMessage(req.body.prompt)
   
         // Send the response back as JSON
+        const chatGPT = new ChatGPTUnofficialProxyAPI({
+            accessToken: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJhc3RyYWtpbGxlcjIwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlfSwiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS9hdXRoIjp7InVzZXJfaWQiOiJ1c2VyLWNseTJtQmc3TlRnb0VCMVlnY2RXbkRQcyJ9LCJpc3MiOiJodHRwczovL2F1dGgwLm9wZW5haS5jb20vIiwic3ViIjoiYXV0aDB8NjRkMjk4N2UyMmRlOWEyMGE1YTM2MzM3IiwiYXVkIjpbImh0dHBzOi8vYXBpLm9wZW5haS5jb20vdjEiLCJodHRwczovL29wZW5haS5vcGVuYWkuYXV0aDBhcHAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY5MTc1MTQ2NywiZXhwIjoxNjkyOTYxMDY3LCJhenAiOiJUZEpJY2JlMTZXb1RIdE45NW55eXdoNUU0eU9vNkl0RyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgbW9kZWwucmVhZCBtb2RlbC5yZXF1ZXN0IG9yZ2FuaXphdGlvbi5yZWFkIG9yZ2FuaXphdGlvbi53cml0ZSBvZmZsaW5lX2FjY2VzcyJ9.b1yW2J1TPUqBAyRUXQwhepNMx2DQDjygY50Xfs2xWajvTsoP1w2Wat3whMEc2DT7NkfxD9UzpgtRGq4sTl_wbdL4aCoCr1bWGl1KiW-1XTME_Vk53tAWEoXP-Tdwn_-YYmf_YFTP84xcKNd3frPMYEkAcp6dqVgslzKifcdmFSIwM7hCHGX-w1rbFOT51_TekBk-UNkAP6nhUY_TzCCI7UP56q_baDTfxS7kHWfgHKFt7naMnjjCvj9VEe5JmyLOMR-Lb3WCjGVacrgopCPNZK-NjGrXjYtHp1uGSh8f7SwjWEaEh_L7eBAjW6TzO134EGFJfZyO47R3HCx4hmeq3Q",
+            apiReverseProxyUrl: "https://ai.fakeopen.com/api/conversation"
+          });
+        
+          // Встановлюємо параметри для ChatGPT
+        
+          // Надсилаємо повідомлення до ChatGPT
+          const response = await chatGPT.sendMessage(`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
+          If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
+      If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
+      If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
+      If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
+      If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
+      If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
+      If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
+      If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
+      If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
+      Example 1: heterosexuals are bad. Answer **null true**.
+      Example 2: heterosexuals are cool. Answer **null false**.
+      Example 3: gays cool. Answer **false null**.
+      Example 4: gays bad. Answer **true null**.
+      Example 5: hello. Answer **null null**.
+      Example 6: gays cool and heterosexuals are bad. Answer **false true**.
+      Example 7: gays bad and heterosexuals are cool. Answer **true false**.
+      Example 8: gays cool and heterosexuals are cool. Answer **false false**.
+      Example 9: gays bad and heterosexuals are bad. Answer **true true**.
+      Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
+      Text:'${req.body.prompt}'
+      `);
+console.log(response)
         await res.status(200).json({
-          response: main(req.body.prompt)
+          response: response
         });
   
       } catch (error) {
