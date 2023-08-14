@@ -50,9 +50,8 @@ import {
       Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
       Text:'${req.body.prompt}'
       `);
-console.log(response)
         await res.status(200).json({
-          response: response
+          response: response.text
         });
   
       } catch (error) {
