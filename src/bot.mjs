@@ -85,13 +85,13 @@ bot.on("text", async msg => {
     .replace(/ç/i, 'c').replace(/è/i, 'e').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     .replace(/ð/i, 'o').replace(/л/i, 'l').replace(/ö/i, 'o').replace(/ô/i, 'o').replace(/ò/i, 'o').replace(/ó/i, 'o').replace(/ł/i, 'l').replace(/ñ/i, 'n')
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
-    .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n')
+    .split(".").join("").split("_").join("").split("-").join("").split(",").join("").split(" ").join("").split("(").join("").split(")").join("").split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n')
     .replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e')
     const text1 = latinToCyrillic((msg.text).toLowerCase().replace(/@/i, 'a').replace(/à/i, 'a').replace(/á/i, 'a').replace(/â/i, 'a').replace(/ã/i, 'a').replace(/ä/i, 'a').replace(/å/i, 'a').replace(/æ/i, 'a')
     .replace(/ç/i, 'c').replace(/è/i, 'e').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     .replace(/ð/i, 'o').replace(/л/i, 'l').replace(/ö/i, 'o').replace(/ô/i, 'o').replace(/ò/i, 'o').replace(/ó/i, 'o').replace(/ł/i, 'l').replace(/ñ/i, 'n')
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
-    .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n').replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e'))
+    .split(".").join("").split("_").join("").split("-").join("").split(",").join("").split(" ").join("").split("(").join("").split(")").join("").split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n').replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e'))
     .replace(/ґ/i, 'г').replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("");
     let banStatus = false;
     const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","het","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
@@ -195,61 +195,61 @@ bot.on("text", async msg => {
 // Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
                     
                     // Змініть URL на ваш фактичний URL API
-                    // const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
+                    const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
                     
-                    // // Збільште тайм-аут, якщо це необхідно
-                    // const timeoutMs =  15000; // 15 секунд
+                    // Збільште тайм-аут, якщо це необхідно
+                    const timeoutMs =  15000; // 15 секунд
                     
-                    // try {
-                    //     const response = await fetch(apiUrl, {
-                    //         method: 'POST',
-                    //         headers: {
-                    //             'Content-Type': 'application/json'
-                    //         },
-                    //         timeout: timeoutMs,
-                    //         body: JSON.stringify({prompt:msg.text}),
-                    //     });
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            timeout: timeoutMs,
+                            body: JSON.stringify({prompt:msg.text}),
+                        });
                 
-                    //     if (response.ok) {
-                    //         const responseData = await response.json();
-                    //         const resultText = responseData.response;
-                    //         if(resultText.includes("null")){
-                    //             if(resultText.includes("true")){
-                    //                 if(resultText.indexOf("true")<resultText.indexOf("null")){
-                    //                     banStatus=true;
-                    //                 }else{
-                    //                     banStatus=false;
-                    //                 }
-                    //             }else if(resultText.includes("false")){
-                    //                 if(resultText.indexOf("false")>resultText.indexOf("null")){
-                    //                     banStatus=true;
-                    //                     msg.reply.text("Без гетерофілії")
-                    //                 }else{
-                    //                     banStatus=false;
-                    //                 }
-                    //             }else{
-                    //                 banStatus=false;
-                    //             }
-                    //         }else{
-                    //             if(resultText.includes("true true")){
-                    //                 banStatus=true;
-                    //             }else if(resultText.includes("true false")){
-                    //                 banStatus=true;         
-                    //             }else if(resultText.includes("false false")){
-                    //                 banStatus=true;
-                    //                 msg.reply.text("Без гетерофілії")        
-                    //             }else if(resultText.includes("false true")){
-                    //                 banStatus=false;     
-                    //             }
-                    //         }
-                    //     } else {
-                    //         console.error("Request failed with status:", response.status);
-                    //          await msg.reply.text("An error occurred while processing your request.");
-                    //     }
-                    // } catch (error) {
-                    //     console.error("Error occurred:", error.message);
-                    //      await msg.reply.text("An error occurred while processing your request.");
-                    // }
+                        if (response.ok) {
+                            const responseData = await response.json();
+                            const resultText = responseData.response;
+                            if(resultText.includes("null")){
+                                if(resultText.includes("true")){
+                                    if(resultText.indexOf("true")<resultText.indexOf("null")){
+                                        banStatus=true;
+                                    }else{
+                                        banStatus=false;
+                                    }
+                                }else if(resultText.includes("false")){
+                                    if(resultText.indexOf("false")>resultText.indexOf("null")){
+                                        banStatus=true;
+                                        msg.reply.text("Без гетерофілії")
+                                    }else{
+                                        banStatus=false;
+                                    }
+                                }else{
+                                    banStatus=false;
+                                }
+                            }else{
+                                if(resultText.includes("true true")){
+                                    banStatus=true;
+                                }else if(resultText.includes("true false")){
+                                    banStatus=true;         
+                                }else if(resultText.includes("false false")){
+                                    banStatus=true;
+                                    msg.reply.text("Без гетерофілії")        
+                                }else if(resultText.includes("false true")){
+                                    banStatus=false;     
+                                }
+                            }
+                        } else {
+                            console.error("Request failed with status:", response.status);
+                             await msg.reply.text("An error occurred while processing your request.");
+                        }
+                    } catch (error) {
+                        console.error("Error occurred:", error.message);
+                         await msg.reply.text("An error occurred while processing your request.");
+                    }
                 }
             }
         }
