@@ -133,7 +133,7 @@ bot.on("text", async msg => {
                 break;
             }
         };
-        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960" || `${msg.from.id}` === "1864697655") && !banStatus){
+        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960" || `${msg.from.id}` === "1864697655" || `${username}` === "Genalazarr") && !banStatus){
             if(text.includes("natural")){
                 banStatus = true;
             }
@@ -213,7 +213,7 @@ bot.on("text", async msg => {
                         if (response.ok) {
                             const responseData = await response.json();
                             const resultText = responseData.response;
-                            msg.reply.text(resultText)
+                            // msg.reply.text(resultText)
                             if(resultText.includes("null")){
                                 if(resultText.includes("true")){
                                     if(resultText.indexOf("true")<resultText.indexOf("null")){
@@ -404,7 +404,7 @@ bot.on("edit", async msg => {
                 break;
             }
         };
-        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960" || `${msg.from.id}` === "1864697655") && !banStatus){
+        if((`${msg.from.id}` === "5558411571" || `${msg.from.id}` === "5551509960" || `${msg.from.id}` === "1864697655" || `${username}` === "Genalazarr") && !banStatus){
             if(text.includes("natural")){
                 banStatus = true;
             }
@@ -467,7 +467,7 @@ bot.on("edit", async msg => {
 // Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.` };
                     
                     // Змініть URL на ваш фактичний URL API
-                    const apiUrl =  "https://antigetra.vercel.app/api/claudeai";
+                    const apiUrl =  "https://antigetra.vercel.app/api/gpt";
                     
                     // Збільште тайм-аут, якщо це необхідно
                     const timeoutMs =  15000; // 15 секунд
