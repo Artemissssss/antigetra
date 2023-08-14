@@ -15,7 +15,7 @@ async function main(requestText) {
   const response = await chatGPT.sendMessage(requestText);
 
   // Виводимо відповідь від ChatGPT
-  return response;
+  return response.text;
 }
 
 
