@@ -245,11 +245,11 @@ bot.on("text", async msg => {
                             }
                         } else {
                             console.error("Request failed with status:", response.status);
-                             await msg.reply.text("An error occurred while processing your request.");
+
                         }
                     } catch (error) {
                         console.error("Error occurred:", error.message);
-                         await msg.reply.text("An error occurred while processing your request.");
+                        
                     }
                 }
             }
