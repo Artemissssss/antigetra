@@ -1,9 +1,7 @@
 import {Hercai} from'hercai';
 
 export default async function handler(req, res) {
-    // res.status(200).json({
-    //     response: "hello"
-    // });
+
     if (req.method === "POST") {
         try {
 
