@@ -661,7 +661,7 @@ bot.on(/^\/gpt (.+)$/, async (msg,props) => {
         if (response.ok) {
             const responseData = await response.json();
             const resultText = responseData.response;
-            return await msg.reply.text(resultText.text);
+            return await msg.reply.text(resultText.response);
         } else {
             console.error("Request failed with status:", response.status);
             return await msg.reply.text("An error occurred while processing your request.");
