@@ -96,7 +96,7 @@ bot.on("text", async msg => {
     let banStatus = false;
     const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","het","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
     const username = msg.from.username;
-    if(username!=="Artemis_Vainshtein" && username !=="vladda_ak" && username !=="Mirabell_uww" && username !=="fkyib" && username !=="theycallmenazar" && username !=="mzahruy" && username !=="meowvvviks"){
+    if(username!=="Artemis_Vainshtein" && username !=="vladda_ak" && username !=="Mirabell_uww" && username !=="fkyib" && username !=="theycallmenazar" && username !=="mzahruy" && username !=="meowvvviks" && username !== "Ciacam"){
         for(let i = 0; i<banWords.length;i++){
             if((text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])) && !text.includes("гетьман") && !text1.includes("гетьман")){
                 banStatus = true;
@@ -356,18 +356,18 @@ bot.on("edit", async msg => {
     .replace(/ç/i, 'c').replace(/è/i, 'e').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     .replace(/ð/i, 'o').replace(/л/i, 'l').replace(/ö/i, 'o').replace(/ô/i, 'o').replace(/ò/i, 'o').replace(/ó/i, 'o').replace(/ł/i, 'l').replace(/ñ/i, 'n')
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
-    .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n')
+    .split(".").join("").split("_").join("").split("-").join("").split(",").join("").split(" ").join("").split("(").join("").split(")").join("").split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n')
     .replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e')
     const text1 = latinToCyrillic((msg.text).toLowerCase().replace(/@/i, 'a').replace(/à/i, 'a').replace(/á/i, 'a').replace(/â/i, 'a').replace(/ã/i, 'a').replace(/ä/i, 'a').replace(/å/i, 'a').replace(/æ/i, 'a')
     .replace(/ç/i, 'c').replace(/è/i, 'e').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
     .replace(/ð/i, 'o').replace(/л/i, 'l').replace(/ö/i, 'o').replace(/ô/i, 'o').replace(/ò/i, 'o').replace(/ó/i, 'o').replace(/ł/i, 'l').replace(/ñ/i, 'n')
     .replace(/ń/i, 'n').replace(/0/i, 'o').replace(/é/i, 'e').replace(/ê/i, 'e').replace(/ë/i, 'e').replace(/ì/i, 'i').replace(/í/i, 'i').replace(/î/i, 'i')
-    .replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n').replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e'))
+    .split(".").join("").split("_").join("").split("-").join("").split(",").join("").split(" ").join("").split("(").join("").split(")").join("").split(" ").join("").replace(/ŋ/i, 'n').replace(/ŉ/i, 'n').replace(/ņ/i, 'n').replace(/ġ/i, 'g').replace(/ĝ/i, 'g').replace(/ğ/i, 'g').replace(/ģ/i, 'g').replace(/ĥ/i, 'e'))
     .replace(/ґ/i, 'г').replace(/./i, '').replace(/_/i, '').replace(/-/i, '').replace("(", '').replace(")", '').split(" ").join("");
     let banStatus = false;
-    const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","heterö","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
+    const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","het","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
     const username = msg.from.username;
-    if(username!=="Artemis_Vainshtein" && msg.from.id !=="1647838471" && msg.from.id !=="833961178" && msg.from.id !=="1128434712" &&msg.from.id !=="888466576" && msg.from.id !=="752317094" && msg.from.id !=="628452250"){
+    if(username!=="Artemis_Vainshtein" && username !=="vladda_ak" && username !=="Mirabell_uww" && username !=="fkyib" && username !=="theycallmenazar" && username !=="mzahruy" && username !=="meowvvviks" && username !== "Ciacam"){
         for(let i = 0; i<banWords.length;i++){
             if((text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])) && !text.includes("гетьман") && !text1.includes("гетьман")){
                 banStatus = true;
@@ -421,26 +421,25 @@ bot.on("edit", async msg => {
                     banStatus = true;
                 };
             };
-            if(!banStatus){///moderations
+ if(!banStatus){///moderations
+    // let resultR;
+    // await fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       input: msg.text
+    //     })
+    //   })
+    //     .then(async response => await response.json())
+    //     .then(data => {resultR = data
+    //     })
+    //     .catch(error => console.error('Помилка:', error));
 
-//                 fetch('https://this-is-api.run-eu-central1.goorm.site/moderations', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     input: msg.text
-//   })
-// })
-//   .then(response => response.json())
-//   .then(data => {console.log(data)
-// if(response.results[0].categories.hate || response.results[0].categories.hate/threatening || response.results[0].categories.harassment || response.results[0].categories.violence || response.results[0].categories.violence/graphic){
-//                             banStatus = true;
-// }
-// })
-//   .catch(error => console.error('Помилка:', error));
-               
-
+    //     if(resultR?.results[0].categories.hate || resultR?.results[0].categories.hate/threatening || resultR?.results[0].categories.harassment || resultR?.results[0].categories.violence || resultR?.results[0].categories.violence/graphic){
+    //         banStatus = true;
+    // }
                 if(!banStatus){
 //                     const promptText = `Text: '${msg.text}'
 //                 `;
@@ -485,6 +484,7 @@ bot.on("edit", async msg => {
                         if (response.ok) {
                             const responseData = await response.json();
                             const resultText = responseData.response.toLowerCase();
+                            // msg.reply.text(resultText)
                             if(resultText.includes("null")){
                                 if(resultText.includes("true")){
                                     if(resultText.indexOf("true")<resultText.indexOf("null")){
