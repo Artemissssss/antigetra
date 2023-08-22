@@ -815,5 +815,11 @@ bot.on(/^\/claude (.+)$/, async (msg,props) => {
     }
 });
 
+bot.on(/^\/gayclub (.+)$/, async (msg,props) => {
+    const promptText = `${props.match[1]}`;
+    return bot.sendMessage(-1001955166931, promptText);
+});
+
+
 export default bot
 
