@@ -111,20 +111,62 @@ bot.on("text", async msg => {
     const banWords = ["#stop_lgbt","гет","я не такий","альх","я нормальний","я не гей","я не ґей","get","het","гет","het","гетеро","Ґeт","Гѐтѐро̀","Гѐтеро̀","Слава гѐтѐро̀","Вічна слава гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","Гѐтѐро̀","hęt","Я ґetерo","Але не лгбт","ґетеро","/start привіт","st lg","Fhdb","gét","gęt","gėt","geŧ","/add","/block 1052973544 1024","/block 1052973544 -1","Стоп ЛГБТ","Ахахахахахахазазазазахахах","Ахахахахахахазазазазахахахх","клевета","/block 1052973544 5000","/gpt4 Як зупинити пропаганду лгбт","#зупіть_пропаганду_лгбт","#НІ_лівій_пропаганді","#say_no_js_say_yes_python","#27ліцей","#45ліцей","#stop_l_g_b_t","#ні_лівій_пропаганді","#no_🏳️‍🌈","#!лгбт","Я!лгбт","я!лгбт","Hęтеросексуальність - це основний ген","зупиніть пропаганду ґеїв","Я не гей, і ніколи ним не буду","Гетеро","Гетеро","Ґетеро","no🏳️‍🌈","noo🏳️‍🌈","nó🏳️‍🌈","nooo🏳️‍🌈","#депорошенізація","🏳️‍🌈no","ģēŧerо"];
     const username = msg.from.username;
     if(username!=="Artemis_Vainshtein" && username !=="vladda_ak" && username !=="Mirabell_uww" && username !=="fkyib" && username !=="theycallmenazar" && username !=="mzahruy" && username !=="meowvvviks" && username !== "Ciacam"){
-        if((text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12) && text1.indexOf("ге")!==-1 && text1.indexOf("те")!==1){
-            banStatus = true;
-        }else if((text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12) && text1.indexOf("г")!==-1 && text1.indexOf("ете")!==1){
-            banStatus = true;
-        }
-        else if((text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12) && text1.indexOf("гет")!==-1 && text1.indexOf("е")!==1){
-            banStatus = true;
-        }
+        
         for(let i = 0; i<banWords.length;i++){
             if((text.includes(banWords[i]) || text1.includes(banWords[i]) || msg.text.includes(banWords[i])) && !text.includes("геть") && !text1.includes("геть")){
                 banStatus = true;
                 break;
             }else if(text.includes("st") && text.includes("lg")){
-                banStatus = true;
+     if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+        }if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+        }if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+        }if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+        }if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+        }if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+                                                                     }if(text1.indexOf("ге")<text1.indexOf("те") && text1.indexOf("те")-text1.indexOf("ге") <= 12){
+            banStatus = true;
+        }else if(text1.indexOf("г")<text1.indexOf("ете") && text1.indexOf("ете")-text1.indexOf("г") <= 12){
+            banStatus = true;
+        }
+        else if(text1.indexOf("гет")<text1.indexOf("е") && text1.indexOf("к")-text1.indexOf("гет") <= 12){
+            banStatus = true;
+        }           banStatus = true;
                 break;
             }else if(text1.includes("ст") && (text1.includes("лг") || text.includes("лґ"))){
                 banStatus = true;
