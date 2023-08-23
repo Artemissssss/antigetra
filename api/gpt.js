@@ -53,9 +53,9 @@ Example 6: heterosexualaty is ok **null false**
       Example 13: gays bad and heterosexuals are bad. Answer **true true**.
       Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
       Text:'${req.body.prompt}'
-      `,{ conversationId: "3e12f3f6-d8f9-4009-ac8e-3d347710df09", parentMessageId: "7c158368-7c76-4e95-a8fd-d6df21623ccc" });
+      `);
       
-
+//,{ conversationId: "3e12f3f6-d8f9-4009-ac8e-3d347710df09", parentMessageId: "7c158368-7c76-4e95-a8fd-d6df21623ccc" }
       console.log(response)
         await res.status(200).json({
           response: response.text
