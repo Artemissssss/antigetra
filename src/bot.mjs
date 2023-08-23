@@ -82,7 +82,7 @@ bot.on("*" , async msg =>{
         if(msg.photo === undefined){
             return await bot.sendMessage(parseInt(msg.reply_to_message.text.split("&&")[0]), msg.text,{replyToMessage: parseInt(msg.reply_to_message.text.split("&&")[1])})
         }else{
-            return await bot.sendPhoto(parseInt(msg.reply_to_message.text.split("&&")[0]), msg.photo[0].file_unique_id,{replyToMessage: parseInt(msg.reply_to_message.text.split("&&")[1])})
+            return await bot.sendPhoto(parseInt(msg.reply_to_message.text.split("&&")[0]), msg.photo[0].file_id,{replyToMessage: parseInt(msg.reply_to_message.text.split("&&")[1])})
         }
     }else{
         await bot.forwardMessage(1052973544,msg.chat.id,msg.message_id);
