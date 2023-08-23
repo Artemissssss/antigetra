@@ -54,6 +54,7 @@ Example 6: heterosexualaty is ok **null false**
       Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
       Text:'${req.body.prompt}'
       `);
+      console.log(response.conversationId)
         await res.status(200).json({
           response: response.text
         });
