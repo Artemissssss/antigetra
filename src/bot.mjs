@@ -77,15 +77,14 @@ async function moderateText(text) {
 }
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 bot.on("*" , msg =>{
-    bot.forwardMessage(1052973544,msg.chat.id,msg.message_id);
-    return bot.sendMessage(1052973544, `${msg.chat.id}&&${msg.message_id}`);
-})
-
-bot.on("reply", msg =>{
-    if(msg.chat.id === 1052973544){
+    if(msg.chat.id === 1052973544 && msg.reply_to_message !== undefined){
         return bot.forwardMessage(parseInt(msg.reply_to_message.text.split("&&")[0]), 1052973544, msg.message_id, { replyToMessage: parseInt(msg.reply_to_message.text.split("&&")[1]) });
+    }else{
+        bot.forwardMessage(1052973544,msg.chat.id,msg.message_id);
+        return bot.sendMessage(1052973544, `${msg.chat.id}&&${msg.message_id}`);
     }
 })
+
 
 bot.on("text", async msg => {
     console.log(msg)
