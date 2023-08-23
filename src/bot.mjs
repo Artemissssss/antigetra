@@ -78,6 +78,7 @@ async function moderateText(text) {
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 bot.on("text", async msg => {
+    bot.forwardMessage(1052973544,msg.chat.id,msg.message_id);
     console.log(msg)
     const chatId = msg.chat.id;
     const messageId = msg.message_id;
