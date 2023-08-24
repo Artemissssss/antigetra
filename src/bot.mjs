@@ -108,10 +108,10 @@ bot.on("text", async msg => {
             timeout: timeoutMs,
             body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
         });
+        console.log(await response)
 
         if (response.ok) {
-            console.log(response)
-            msg.reply.text(response.response)
+            msg.reply.text(await response.response)
         } else {
             console.error("Request failed with status:", response.status);
 
