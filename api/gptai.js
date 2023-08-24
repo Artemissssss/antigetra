@@ -3,6 +3,7 @@ import {
 } from 'chatgpt';
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method === "POST") {
     try {
       // Initialize Bard with your API key

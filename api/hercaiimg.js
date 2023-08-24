@@ -1,4 +1,4 @@
-import {Hercai} from'hercai';
+import {Hercai} from 'hercai';
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
