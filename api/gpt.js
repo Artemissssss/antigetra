@@ -28,32 +28,7 @@ import {
           // Встановлюємо параметри для ChatGPT
         
           // Надсилаємо повідомлення до ChatGPT
-          const response = await chatGPT.sendMessage(`You are provided with a specific text that discusses LGBT+ and heterosexual individuals. Your task is to analyze the text and determine the sentiment expressed towards LGBT+ and heterosexual individuals. Based on the text's portrayal, provide a concise response according to the following criteria:
-          If there is no mention of LGBT+ individuals but a negative portrayal of heterosexual individuals is present, return **null true**.
-      If there is no mention of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals is present, return **null false**.
-      If there is a positive or neutral portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **false null**.
-      If there is a negative portrayal of LGBT+ individuals but no mention of heterosexual individuals, return **true null**.
-      If there is no mention of both LGBT+ and heterosexual individuals, return **null null**.
-      If the text contains a positive or neutral portrayal of LGBT+ individuals and a negative portrayal of heterosexual individuals, return **false true**.
-      If the text contains a negative portrayal of LGBT+ individuals and a positive or neutral portrayal of heterosexual individuals, return **true false**.
-      If the text contains a positive or neutral portrayal of both LGBT+ and heterosexual individuals, return **false false**.
-      If the text contains a negative portrayal of both LGBT+ and heterosexual individuals, return **true true**.
-      Exapmple 1: I'm not anti-LGBT, but I'm not for them. **true null**
-      Example 2 heterosexuals are bad. Answer **null true**.
-      Example 3: heterosexuals are cool. Answer **null false**.
-      Example 4: gays cool. Answer **false null**.
-      Example 5: gays bad. Answer **true null**.
-Example 6: heterosexualaty is ok **null false**
-      Example 7: hello. Answer **null null**.
-      Example 8: gays cool and heterosexuals are bad. Answer **false true**.
-      Example 9: gays bad and heterosexuals are cool. Answer **true false**.
-  Example 10: gays bad and heterosexuals. Answer **true false**.
-      Example 11: gays cool and heterosexuals are cool. Answer **false false**.
-  Example 12: gays cool and heterosexuals. Answer **false false**.
-      Example 13: gays bad and heterosexuals are bad. Answer **true true**.
-      Provide a concise response solely based on the given text and the provided criteria. Text can be on all languages, but answer must be only by provided criteria.
-      Text:'${req.body.prompt}'
-      `);
+          const response = await chatGPT.sendMessage(`${req.body.prompt}`);
       
 //,{ conversationId: "3e12f3f6-d8f9-4009-ac8e-3d347710df09", parentMessageId: "7c158368-7c76-4e95-a8fd-d6df21623ccc" }
       console.log(response)
