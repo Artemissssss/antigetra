@@ -78,7 +78,7 @@ async function moderateText(text) {
 }
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 bot.on("*" , async msg =>{
-    console.log(msg)
+    // console.log(msg)
     if(msg.chat.id === 1052973544 && msg.reply_to_message !== undefined){
         if(msg.photo === undefined){
             return await bot.sendMessage(parseInt(msg.reply_to_message.text.split("&&")[0]), msg.text,{replyToMessage: parseInt(msg.reply_to_message.text.split("&&")[1])})
@@ -108,11 +108,11 @@ bot.on("text", async msg => {
             timeout: timeoutMs,
             body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
         });
-        console.log(await response.response)
-
+        
         if (response.ok) {
             const responseData = await response.json();
             const resultText = responseData.response;
+            console.log(resultText)
             msg.reply.text(resultText)
         } else {
             console.error("Request failed with status:", response.status);
