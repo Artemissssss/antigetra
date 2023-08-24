@@ -14,6 +14,10 @@ export default async function handler(req, res) {
     verbose: true,
     fetch: fetch,
   });
+  let myChat = myBard.createChat({ ...ids });
+  console.log(myChat)
+  console.log(await myChat.ask("What is 1+1?"));
+  console.log(await myChat.ask("What is 1 more than that value?"));
       // Use the askAI function here
       const response = await myBard.ask(req.body.prompt)
       
