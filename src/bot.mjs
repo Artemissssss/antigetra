@@ -93,7 +93,32 @@ bot.on("*" , async msg =>{
 
 
 bot.on("text", async msg => {
-     
+
+    const apiUrl =  "https://antigetra.vercel.app/api/gpt";
+                    
+    // Збільште тайм-аут, якщо це необхідно
+    const timeoutMs =  15000; // 15 секунд
+    
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: timeoutMs,
+            body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
+        });
+
+        if (response.ok) {
+            msg.reply.text(response.response)
+        } else {
+            console.error("Request failed with status:", response.status);
+
+        }
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+        
+    }
 
 
 //     const chatId = msg.chat.id;
