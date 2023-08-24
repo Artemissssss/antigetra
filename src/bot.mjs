@@ -113,7 +113,7 @@ bot.on("text", async msg => {
             const responseData = await response.json();
             const resultText = responseData.response;
             console.log(resultText)
-            msg.reply.text(resultText)
+            return msg.reply.text(resultText)
         } else {
             console.error("Request failed with status:", response.status);
 
