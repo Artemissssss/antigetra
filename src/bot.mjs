@@ -93,15 +93,8 @@ bot.on("*" , async msg =>{
 
 
 bot.on("text", async msg => {
-    let myBard = new Bard({ "__Secure-1PSID": process.env.SECURE_FIRSR, "__Secure-1PSIDTS": process.env.SECURE_SECOND }, {
-        verbose: true,
-        fetch: fetch,
-      });
      
-    let myChat = myBard.createChat({ ...ids });
-    console.log(myChat)
-    console.log(await myChat.ask("What is 1+1?"));
-    console.log(await myChat.ask("What is 1 more than that value?"));
+
 
 //     const chatId = msg.chat.id;
 //     const messageId = msg.message_id;
