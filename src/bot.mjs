@@ -1,7 +1,14 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
+import Bard from "bard-ai";
+import { Configuration,OpenAIApi } from 'openai';
 import { MongoClient } from 'mongodb';
+const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  const openai = new OpenAIApi(configuration);
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
@@ -101,10 +108,12 @@ bot.on("text", async msg => {
             timeout: timeoutMs,
             body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
         });
-        console.log(await response)
+        console.log(await response.response)
 
         if (response.ok) {
-            msg.reply.text(await response.response)
+            const responseData = await response.json();
+            const resultText = responseData.response;
+            msg.reply.text(resultText)
         } else {
             console.error("Request failed with status:", response.status);
 
