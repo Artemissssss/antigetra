@@ -110,6 +110,7 @@ bot.on("text", async msg => {
         });
 
         if (response.ok) {
+            console.log(response)
             msg.reply.text(response.response)
         } else {
             console.error("Request failed with status:", response.status);
