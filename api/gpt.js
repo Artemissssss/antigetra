@@ -28,7 +28,7 @@ import {
           // Встановлюємо параметри для ChatGPT
         
           // Надсилаємо повідомлення до ChatGPT
-          const response = await chatGPT.sendMessage(`${req.body.prompt}`,{ conversationId: "a5aaa375-62ab-4bb7-a02b-b80804c7ef0d", parentMessageId: "d514e29e-d015-43b0-b288-ad0584b581db" });
+          const response = await chatGPT.sendMessage(`${req.body.prompt}`);
       
 
       console.log(response)

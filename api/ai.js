@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     verbose: true,
     fetch: fetch,
   });
-  let myChat = myBard.createChat();
+  let myChat = myBard.createChat({ids:123});
   console.log(myChat)
   console.log(await myChat.ask("What is 1+1?"));
   console.log(await myChat.ask("What is 1 more than that value?"));
