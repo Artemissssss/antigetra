@@ -91,7 +91,7 @@ bot.on("*" , async msg =>{
     }
 })
 function randomBoolean() {
-    const randomNumber = Math.floor(Math.random() * 11);
+    const randomNumber = Math.floor(Math.random() * 5);
     return randomNumber === 0;
 }
 
