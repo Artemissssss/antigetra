@@ -7,10 +7,10 @@
   "crons": [
     {
       "path": "/api/sleep",
-      "schedule": "40 14 * * *"
+      "schedule": "00 20 * * *"
     },{
       "path": "/api/morn",
-      "schedule": "0 7 * * *"
+      "schedule": "0 4 * * *"
     }
   ],
   "github": {
