@@ -1,7 +1,6 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
-import Bard from "bard-ai";
 import { Configuration,OpenAIApi } from 'openai';
 import { MongoClient } from 'mongodb';
 const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
