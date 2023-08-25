@@ -90,7 +90,7 @@ bot.on("*" , async msg =>{
     }
 })
 function randomBoolean() {
-    const randomNumber = Math.floor(Math.random() * 2);
+    const randomNumber = Math.floor(Math.random() * 3);
     return randomNumber === 0;
 }
 
@@ -101,7 +101,7 @@ bot.on("text", async msg => {
     const ukraineTime = new Date(now.getTime() + utcOffset + (3600000*3));
     const hour = ukraineTime.getUTCHours();
     
-    if ((hour >= 10 && hour < 11) || (hour >= 13 && hour < 14) || (hour >= 18 && hour < 19) || (hour >= 21 && hour < 24)) {
+    if ((hour >= 10 && hour < 12) || (hour >= 13 && hour < 14) || (hour >= 18 && hour < 20) || (hour >= 21 && hour < 24)) {
         if(msg.from.username ===theycallmenazar || msg.from.username ==="Artemis_Vainshtein"){
             const apiUrl =  "https://antigetra.vercel.app/api/gpt";
                             
