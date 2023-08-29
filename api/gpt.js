@@ -25,9 +25,7 @@ import {
             apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
           });
         
-          // Встановлюємо параметри для ChatGPT
-        
-          // Надсилаємо повідомлення до ChatGPT
+
           const response = await chatGPT.sendMessage(`${req.body.prompt}`);
       
 
