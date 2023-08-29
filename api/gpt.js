@@ -22,7 +22,7 @@ import {
   
         // Send the response back as JSON
         const chatGPT = new ChatGPTUnofficialProxyAPI({
-            accessToken: ,
+            accessToken: process.env.OPENAI_API_KEY,
             apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
           });
         
