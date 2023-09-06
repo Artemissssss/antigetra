@@ -4,15 +4,6 @@
       "includeFiles": "node_modules/telebot/plugins/**"
     }
   },
-  "crons": [
-    {
-      "path": "/api/sleep",
-      "schedule": "00 20 * * *"
-    },{
-      "path": "/api/morn",
-      "schedule": "0 4 * * *"
-    }
-  ],
   "github": {
     "silent": true
   }
