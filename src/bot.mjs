@@ -777,7 +777,7 @@ bot.on(/^\/gpt (.+)$/, async (msg,props) => {
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://antigetra.vercel.app/api/gptai";
+    const apiUrl =  "https://antigetra.vercel.app/api/gpt";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
