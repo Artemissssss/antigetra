@@ -1,6 +1,7 @@
 // import { BingChat } from 'bing-chat'
 import { ChatBot } from 'bingai-js'
-import { conversation_style } from './src/Utility';
+import { conversation_style } from '../src/Utility';
+
 export default async function handler(req, res) {
   if(req.method === "POST"){
     try {
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
         *   creative : conversation_style.creative
         *   precise  : conversation_style.precise
         */
-       let i = await a.ask(prompt , conversation_style.balanced)
+       let i = await a.ask(req.body.prompt , conversation_style.balanced)
         console.log(i)
         await res.status(200).json({response:i})
     } catch (error) {
