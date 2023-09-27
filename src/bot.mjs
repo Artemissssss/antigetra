@@ -1,6 +1,7 @@
 import TeleBot from "telebot"
 // const openai = require('openai');
 // const { MongoClient } = require('mongodb');
+import Bard from "bard-ai";
 import { Configuration,OpenAIApi } from 'openai';
 import { MongoClient } from 'mongodb';
 const openaiClient = new OpenAIApi(process.env.OPENAI_API_KEY);
@@ -90,110 +91,110 @@ bot.on("*" , async msg =>{
     }
 })
 function randomBoolean() {
-    const randomNumber = Math.floor(Math.random() * 2);
+    const randomNumber = Math.floor(Math.random() * 11);
     return randomNumber === 0;
 }
 
 
 bot.on("text", async msg => {
-    // const now = new Date();
-    // const utcOffset = now.getTimezoneOffset() * 60000;
-    // const ukraineTime = new Date(now.getTime() + utcOffset + (3600000*3));
-    // const hour = ukraineTime.getUTCHours();
+    const now = new Date();
+    const utcOffset = now.getTimezoneOffset() * 60000;
+    const ukraineTime = new Date(now.getTime() + utcOffset + (3600000*3));
+    const hour = ukraineTime.getUTCHours();
     
-    // if ((hour >= 8 && hour < 12) || (hour >= 13 && hour < 16) || (hour >= 18 && hour < 20) || (hour >= 20 && hour < 24)) {
-    //     if(msg.from.username ==="theycallmenazar" || msg.from.username ==="Artemis_Vainshtein"){
-    //         const apiUrl =  "https://antigetra.vercel.app/api/gpt";
+    if ((hour >= 10 && hour < 11) || (hour >= 13 && hour < 14) || (hour >= 18 && hour < 19) || (hour >= 21 && hour < 24)) {
+        if(msg.from.username ===theycallmenazar || msg.from.username ==="Artemis_Vainshtein"){
+            const apiUrl =  "https://antigetra.vercel.app/api/gpt";
                             
-    //         // Збільште тайм-аут, якщо це необхідно
-    //         const timeoutMs =  15000; // 15 секунд
+            // Збільште тайм-аут, якщо це необхідно
+            const timeoutMs =  15000; // 15 секунд
             
-    //         try {
-    //             const response = await fetch(apiUrl, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 timeout: timeoutMs,
-    //                 body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
-    //             });
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    timeout: timeoutMs,
+                    body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
+                });
                 
-    //             if (response.ok) {
-    //                 const responseData = await response.json();
-    //                 const resultText = responseData.response;
-    //                 console.log(resultText)
-    //                 return msg.reply.text(resultText)
-    //             } else {
-    //                 console.error("Request failed with status:", response.status);
+                if (response.ok) {
+                    const responseData = await response.json();
+                    const resultText = responseData.response;
+                    console.log(resultText)
+                    return msg.reply.text(resultText)
+                } else {
+                    console.error("Request failed with status:", response.status);
         
-    //             }
-    //         } catch (error) {
-    //             console.error("Error occurred:", error.message);
+                }
+            } catch (error) {
+                console.error("Error occurred:", error.message);
                 
-    //         }
-    //     }else if(randomBoolean()){
-    //         const apiUrl =  "https://antigetra.vercel.app/api/gpt";
+            }
+        }else if(randomBoolean()){
+            const apiUrl =  "https://antigetra.vercel.app/api/gpt";
                             
-    //         // Збільште тайм-аут, якщо це необхідно
-    //         const timeoutMs =  15000; // 15 секунд
+            // Збільште тайм-аут, якщо це необхідно
+            const timeoutMs =  15000; // 15 секунд
             
-    //         try {
-    //             const response = await fetch(apiUrl, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 timeout: timeoutMs,
-    //                 body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
-    //             });
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    timeout: timeoutMs,
+                    body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
+                });
                 
-    //             if (response.ok) {
-    //                 const responseData = await response.json();
-    //                 const resultText = responseData.response;
-    //                 console.log(resultText)
-    //                 return msg.reply.text(resultText)
-    //             } else {
-    //                 console.error("Request failed with status:", response.status);
+                if (response.ok) {
+                    const responseData = await response.json();
+                    const resultText = responseData.response;
+                    console.log(resultText)
+                    return msg.reply.text(resultText)
+                } else {
+                    console.error("Request failed with status:", response.status);
         
-    //             }
-    //         } catch (error) {
-    //             console.error("Error occurred:", error.message);
+                }
+            } catch (error) {
+                console.error("Error occurred:", error.message);
                 
-    //         }
-    //     }
-    // } else {
-    //     if(msg.from.username ==="theycallmenazar" || msg.from.username ==="Artemis_Vainshtein"){
-    //         const apiUrl =  "https://antigetra.vercel.app/api/gpt";
+            }
+        }
+    } else {
+        if(msg.from.username ==="theycallmenazar" || msg.from.username ==="Artemis_Vainshtein"){
+            const apiUrl =  "https://antigetra.vercel.app/api/gpt";
                             
-    //         // Збільште тайм-аут, якщо це необхідно
-    //         const timeoutMs =  15000; // 15 секунд
+            // Збільште тайм-аут, якщо це необхідно
+            const timeoutMs =  15000; // 15 секунд
             
-    //         try {
-    //             const response = await fetch(apiUrl, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 timeout: timeoutMs,
-    //                 body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
-    //             });
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    timeout: timeoutMs,
+                    body: JSON.stringify({prompt:`${msg.from.first_name}:'${msg.text}'`}),
+                });
                 
-    //             if (response.ok) {
-    //                 const responseData = await response.json();
-    //                 const resultText = responseData.response;
-    //                 console.log(resultText)
-    //                 return msg.reply.text(resultText)
-    //             } else {
-    //                 console.error("Request failed with status:", response.status);
+                if (response.ok) {
+                    const responseData = await response.json();
+                    const resultText = responseData.response;
+                    console.log(resultText)
+                    return msg.reply.text(resultText)
+                } else {
+                    console.error("Request failed with status:", response.status);
         
-    //             }
-    //         } catch (error) {
-    //             console.error("Error occurred:", error.message);
+                }
+            } catch (error) {
+                console.error("Error occurred:", error.message);
                 
-    //         }
-    //     }
-    //    return null;
-    // }
+            }
+        }
+       return null;
+    }
     
 
 
@@ -777,7 +778,7 @@ bot.on(/^\/gpt (.+)$/, async (msg,props) => {
     const data =  { prompt: promptText };
     
     // Змініть URL на ваш фактичний URL API
-    const apiUrl =  "https://antigetra.vercel.app/api/gpt";
+    const apiUrl =  "https://antigetra.vercel.app/api/gptai";
     
     // Збільште тайм-аут, якщо це необхідно
     const timeoutMs =  15000; // 15 секунд
@@ -957,3 +958,4 @@ bot.on(/^\/gayclub (.+)$/, async (msg,props) => {
 
 export default bot
 
+//YsbcVL8dXcW0lAY7
