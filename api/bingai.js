@@ -28,7 +28,9 @@ export default async function handler(req, res) {
         *   creative : conversation_style.creative
         *   precise  : conversation_style.precise
         */
-        console.log( await a.ask(prompt , conversation_style.balanced))
+       let i = await a.ask(prompt , conversation_style.balanced)
+        console.log(i)
+        await res.status(200).json({response:i})
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Internal server error" });
